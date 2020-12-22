@@ -1,83 +1,57 @@
-// $fonts-path: '../fonts/';
-// $roboto-path: $fonts-path + 'Roboto/';
+$fonts-path: '../fonts/';
+$mont-path: $fonts-path + 'Montserrat/';
 
-// @font-face {
-//     font-family: 'Roboto';
-//     src: url($roboto-path + 'Roboto-Bold.eot');
-//     src: local('Roboto Bold'), local('Roboto-Bold'),
-//         url($roboto-path + 'Roboto-Bold.eot?#iefix') format('embedded-opentype'),
-//         url($roboto-path + 'Roboto-Bold.woff') format('woff'),
-//         url($roboto-path + 'Roboto-Bold.ttf') format('truetype');
-//     font-weight: bold;
-//     font-style: normal;
-// }
+// Fonts
+$arial: 'Arial';
+$mont: 'Montserrat';
 
-// @font-face {
-//     font-family: 'Roboto';
-//     src: url($roboto-path + 'Roboto-Regular.eot');
-//     src: local('Roboto'), local('Roboto-Regular'),
-//         url($roboto-path + 'Roboto-Regular.eot?#iefix') format('embedded-opentype'),
-//         url($roboto-path + 'Roboto-Regular.woff') format('woff'),
-//         url($roboto-path + 'Roboto-Regular.ttf') format('truetype');
-//     font-weight: normal;
-//     font-style: normal;
-// }
+/* stylelint-disable scss/operator-no-unspaced */
 
-// @font-face {
-//     font-family: 'Roboto';
-//     src: url($roboto-path + 'Roboto-Medium.eot');
-//     src: local('Roboto Medium'), local('Roboto-Medium'),
-//         url($roboto-path + 'Roboto-Medium.eot?#iefix') format('embedded-opentype'),
-//         url($roboto-path + 'Roboto-Medium.woff') format('woff'),
-//         url($roboto-path + 'Roboto-Medium.ttf') format('truetype');
-//     font-weight: 500;
-//     font-style: normal;
-// }
+// Montserrat
+@font-face {
+  font-family: $mont;
+  font-style: normal;
+  font-weight: normal;
+  src: url($mont-path+'Montserrat-Regular.woff');
+  src: local('Montserrat-Regular'), local('Montserrat-Regular'),
+    url($mont-path+'Montserrat-Regular.woff') format('woff');
+  font-display: swap;
+}
 
+@font-face {
+  font-family: $mont;
+  font-style: italic;
+  font-weight: normal;
+  src: url($mont-path+'Montserrat-Italic.woff');
+  src: local('Montserrat-Italic'), local('Montserrat-Italic'), url($mont-path+'Montserrat-Italic.woff') format('woff');
+  font-display: swap;
+}
 
-// @font-face {
-//     font-family: 'Roboto';
-//     src: url($roboto-path + 'Roboto-Black.eot');
-//     src: local('Roboto Black'), local('Roboto-Black'),
-//         url($roboto-path + 'Roboto-Black.eot?#iefix') format('embedded-opentype'),
-//         url($roboto-path + 'Roboto-Black.woff') format('woff'),
-//         url($roboto-path + 'Roboto-Black.ttf') format('truetype');
-//     font-weight: 900;
-//     font-style: normal;
-// }
+@font-face {
+  font-family: $mont;
+  font-style: normal;
+  font-weight: 500;
+  src: url($mont-path+'Montserrat-Medium.woff');
+  src: local('Montserrat-Medium'), local('Montserrat-Medium'), url($mont-path+'Montserrat-Medium.woff') format('woff');
+  font-display: swap;
+}
 
-// @font-face {
-//     font-family: 'Roboto';
-//     src: url($roboto-path + 'Roboto-Light.eot');
-//     src: local('Roboto Light'), local('Roboto-Light'),
-//         url($roboto-path + 'Roboto-Light.eot?#iefix') format('embedded-opentype'),
-//         url($roboto-path + 'Roboto-Light.woff') format('woff'),
-//         url($roboto-path + 'Roboto-Light.ttf') format('truetype');
-//     font-weight: 300;
-//     font-style: normal;
-// }
+@font-face {
+  font-family: $mont;
+  font-style: normal;
+  font-weight: 600;
+  src: url($mont-path+'Montserrat-SemiBold.woff');
+  src: local('Montserrat-SemiBold'), local('Montserrat-SemiBold'),
+    url($mont-path+'Montserrat-SemiBold.woff') format('woff');
+  font-display: swap;
+}
 
-// @font-face {
-//     font-family: 'Roboto';
-//     src: url($roboto-path + 'Roboto-Thin.eot');
-//     src: local('Roboto Thin'), local('Roboto-Thin'),
-//         url($roboto-path + 'Roboto-Thin.eot?#iefix') format('embedded-opentype'),
-//         url($roboto-path + 'Roboto-Thin.woff') format('woff'),
-//         url($roboto-path + 'Roboto-Thin.ttf') format('truetype');
-//     font-weight: 100;
-//     font-style: normal;
-// }
-
-// @font-face {
-//     font-family: 'Roboto';
-//     src: url($roboto-path 'Roboto-ThinItalic.eot');
-//     src: local('Roboto Thin Italic'), local('Roboto-ThinItalic'),
-//         url($roboto-path 'Roboto-ThinItalic.eot?#iefix') format('embedded-opentype'),
-//         url($roboto-path 'Roboto-ThinItalic.woff') format('woff'),
-//         url($roboto-path 'Roboto-ThinItalic.ttf') format('truetype');
-//     font-weight: 100;
-//     font-style: italic;
-// }
-
-
-// $roboto: 'Roboto';
+@font-face {
+  font-family: $mont;
+  font-style: normal;
+  font-weight: bold;
+  src: url($mont-path+'Montserrat-Bold.woff');
+  src: local('Montserrat-Bold'), local('Montserrat-Bold'), url($mont-path+'Montserrat-Bold.woff') format('woff');
+  font-display: swap;
+}
+/* stylelint-enable scss/operator-no-unspaced */

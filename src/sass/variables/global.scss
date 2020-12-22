@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: $black;
+}
+
 .container {
   width: 100%;
   max-width: $container-max-width;
@@ -18,5 +22,16 @@ section {
 
   @include max-width($phone) {
     padding: $section-padding-phone;
+  }
+}
+
+a {
+  color: $black;
+  text-decoration: none;
+  transition: color 0.3s;
+
+  &:hover {
+    color: $green;
+    text-decoration: none;
   }
 }

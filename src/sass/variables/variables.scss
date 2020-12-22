@@ -1,6 +1,3 @@
-/* Fonts */
-$arial: 'Arial';
-
 /* Colors */
 $white: #fff;
 $black: #000;
@@ -9,7 +6,7 @@ $dark-gray: #888;
 $medium-gray: #d5d5d5;
 $light-gray: #f9fafc;
 $accent: #2d376a;
-$green: #008000;
+$green: #07bf86;
 
 /* Global */
 // media
@@ -20,7 +17,7 @@ $phone: 600px;
 $phone-sm: 350px;
 
 // container
-$container-max-width: 1200px;
+$container-max-width: 1170px;
 $container-padding: 0 15px;
 
 // section
@@ -30,7 +27,7 @@ $section-padding-phone: 20px 0;
 
 /* Typography */
 // h1
-$h-one-font: $arial;
+$h-one-font: $mont;
 $h-one-font-size: 3rem;
 $h-one-font-size-sm: 2.5rem;
 $h-one-font-weight: bold;
@@ -39,7 +36,7 @@ $h-one-color: $black;
 $h-one-margin: 20px 0;
 
 // h2
-$h-two-font: $arial;
+$h-two-font: $mont;
 $h-two-font-size: 2.5rem;
 $h-two-font-size-sm: 2rem;
 $h-two-font-weight: bold;
@@ -48,7 +45,7 @@ $h-two-color: $black;
 $h-two-margin: 15px 0;
 
 // h3
-$h-three-font: $arial;
+$h-three-font: $mont;
 $h-three-font-size: 2rem;
 $h-three-font-size-sm: 1.5rem;
 $h-three-font-weight: bold;
@@ -57,7 +54,7 @@ $h-three-color: $black;
 $h-three-margin: 10px 0;
 
 // h4
-$h-four-font: $arial;
+$h-four-font: $mont;
 $h-four-font-size: 1.5rem;
 $h-four-font-size-sm: 1.25rem;
 $h-four-font-weight: bold;
@@ -66,7 +63,7 @@ $h-four-color: $black;
 $h-four-margin: 5px 0;
 
 // h5
-$h-five-font: $arial;
+$h-five-font: $mont;
 $h-five-font-size: 1.25rem;
 $h-five-font-size-sm: 1.25rem;
 $h-five-font-weight: bold;
@@ -75,7 +72,7 @@ $h-five-color: $black;
 $h-five-margin: 5px 0;
 
 // h6
-$h-six-font: $arial;
+$h-six-font: $mont;
 $h-six-font-size: 1rem;
 $h-six-font-size-sm: 1rem;
 $h-six-font-weight: bold;
@@ -85,7 +82,7 @@ $h-six-margin: 5px 0;
 
 /* UI */
 // button
-$button-font: $arial;
+$button-font: $mont;
 $button-font-size: 1rem;
 $button-font-weight: bold;
 $button-line-height: 1;
@@ -100,7 +97,7 @@ $button-small-padding: 0.625em 1.25em;
 $button-small-font-size: 14px;
 
 // input
-$input-font: $arial;
+$input-font: $mont;
 $input-font-size: 1rem;
 $input-font-weight: 400;
 $input-line-height: 1.3;
@@ -125,7 +122,7 @@ $textarea-height: 200px;
 $textarea-margin: 5px;
 
 // checkbox
-$checkbox-font: $arial;
+$checkbox-font: $mont;
 $checkbox-font-size: 1rem;
 $checkbox-font-weight: 400;
 $checkbox-line-height: 1;
