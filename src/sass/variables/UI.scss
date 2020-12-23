@@ -36,6 +36,7 @@ button {
     min-width: $button-small-min-width;
     padding: $button-small-padding;
     font-size: $button-small-font-size;
+    border-radius: 15px;
   }
 
   &--primary {
@@ -99,6 +100,7 @@ button {
 .textarea {
   padding: $input-padding;
   margin: $input-margin;
+  width: 190px;
   overflow: hidden;
   font-family: $input-font;
   font-size: $input-font-size;
@@ -109,10 +111,6 @@ button {
   border: $input-border;
   border-radius: $input-border-radius;
   outline: transparent;
-
-  @include max-width($touch) {
-    padding: $input-padding-sm;
-  }
 
   @include placeholder() {
     font-family: $input-font;
@@ -203,9 +201,10 @@ button {
 .radio {
   position: relative;
   display: inline-flex;
-  align-items: center;
+  align-items: baseline;
   margin: $checkbox-margin;
   cursor: pointer;
+
   &__input {
     position: absolute;
     top: 50%;
@@ -225,6 +224,7 @@ button {
       }
     }
   }
+
   &__custom {
     display: inline-flex;
     align-items: center;
@@ -239,10 +239,22 @@ button {
     border-radius: $checkbox-border-radius;
     transition: 0.3s;
   }
+
   &__text {
     display: block;
     font-family: $checkbox-font;
     font-size: $checkbox-font-size;
+    font-weight: $checkbox-font-weight;
+    line-height: $checkbox-line-height;
+    color: $checkbox-color;
+  }
+
+  &__subtext {
+    margin: 10px 0 0 0;
+    display: block;
+    font-weight: 400;
+    font-family: $checkbox-font;
+    font-size: 0.875rem;
     font-weight: $checkbox-font-weight;
     line-height: $checkbox-line-height;
     color: $checkbox-color;
@@ -269,7 +281,9 @@ button {
 }
 
 .radio {
-  margin: $radio-margin;
+  margin: 0;
+  display: flex;
+
   &__input {
     &:checked + .radio__custom {
       background-color: $radio-bg-color-active;
@@ -302,6 +316,47 @@ button {
       opacity: 0;
       transition: opacity 0.3s;
       transform: translate(-50%, -50%);
+    }
+  }
+
+  &--big {
+    display: inline-flex;
+
+    .radio__input:checked + .radio__custom {
+      background-color: $white;
+      border: 2px solid $green;
+
+      &::before {
+        opacity: 0;
+      }
+    }
+
+    .radio__custom {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 68px;
+      min-width: 68px;
+      height: 68px;
+      min-height: 68px;
+      margin: 0;
+      background-color: transparent;
+      border: 2px solid transparent;
+      border-radius: 18px;
+      transition: 0.3s;
+      overflow: hidden;
+
+      &::before {
+        display: none;
+      }
+    }
+
+    .radio__image {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
     }
   }
 }

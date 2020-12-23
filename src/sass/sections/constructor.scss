@@ -1,0 +1,138 @@
+.constructor-section {
+  background-image: url(../img/constructor_bg-1.png);
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+}
+
+.constructor-title {
+  margin: 0 0 100px 0;
+  max-width: 600px;
+  font-weight: bold;
+  font-size: 4.5rem;
+  line-height: 1.2;
+  text-transform: uppercase;
+
+  b {
+    color: $green;
+  }
+}
+
+.constructor-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.constructor-form {
+  &__title {
+    margin: 0 0 30px 0;
+    max-width: 400px;
+    font-weight: bold;
+    font-size: 2.5rem;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &:not(:last-of-type) {
+      margin: 0 0 10px 0;
+    }
+  }
+
+  &__group-row {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .constructor-form__group {
+      margin: 0;
+
+      &:first-child {
+        margin: 0 10px 0 0;
+      }
+    }
+  }
+
+  &__name {
+    margin: 0 15px 0 0;
+    min-width: 200px;
+    font-weight: 500;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    text-align: right;
+
+    &--width-auto {
+      min-width: unset;
+    }
+  }
+
+  &__radios {
+    margin: -5px;
+  }
+
+  &__radio {
+    margin: 5px;
+  }
+
+  &__total {
+    padding: 10px 0;
+
+    &-old {
+      position: relative;
+      display: inline-block;
+      margin: 0 -5px 5px -5px;
+      padding: 0 5px;
+      font-size: 1rem;
+      color: rgb(203, 203, 203);
+      font-weight: 500;
+      white-space: nowrap;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 2px;
+        width: 100%;
+        background-color: $red;
+      }
+    }
+
+    &-price {
+      font-size: 1.5rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+  }
+
+  &__delivery:not(:last-of-type) {
+    margin: 0 0 25px 0;
+  }
+
+  &__button {
+    margin: 25px 0 0 0;
+  }
+}
+
+.constructor-image {
+  position: relative;
+  margin: 40px 0 0 50px;
+
+  &__wrapper {
+    position: sticky;
+    top: 10px;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+  }
+}
