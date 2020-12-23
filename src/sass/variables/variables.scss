@@ -32,7 +32,7 @@ $h-one-font-size: 3rem;
 $h-one-font-size-sm: 2.5rem;
 $h-one-font-weight: bold;
 $h-one-line-height: 1.3;
-$h-one-color: $black;
+$h-one-color: $white;
 $h-one-margin: 20px 0;
 
 // h2
@@ -41,7 +41,7 @@ $h-two-font-size: 2.5rem;
 $h-two-font-size-sm: 2rem;
 $h-two-font-weight: bold;
 $h-two-line-height: 1.3;
-$h-two-color: $black;
+$h-two-color: $white;
 $h-two-margin: 15px 0;
 
 // h3
@@ -50,7 +50,7 @@ $h-three-font-size: 2rem;
 $h-three-font-size-sm: 1.5rem;
 $h-three-font-weight: bold;
 $h-three-line-height: 1.3;
-$h-three-color: $black;
+$h-three-color: $white;
 $h-three-margin: 10px 0;
 
 // h4
@@ -59,7 +59,7 @@ $h-four-font-size: 1.5rem;
 $h-four-font-size-sm: 1.25rem;
 $h-four-font-weight: bold;
 $h-four-line-height: 1.3;
-$h-four-color: $black;
+$h-four-color: $white;
 $h-four-margin: 5px 0;
 
 // h5
@@ -68,7 +68,7 @@ $h-five-font-size: 1.25rem;
 $h-five-font-size-sm: 1.25rem;
 $h-five-font-weight: bold;
 $h-five-line-height: 1.3;
-$h-five-color: $black;
+$h-five-color: $white;
 $h-five-margin: 5px 0;
 
 // h6
@@ -77,17 +77,17 @@ $h-six-font-size: 1rem;
 $h-six-font-size-sm: 1rem;
 $h-six-font-weight: bold;
 $h-six-line-height: 1.3;
-$h-six-color: $black;
+$h-six-color: $white;
 $h-six-margin: 5px 0;
 
 /* UI */
 // button
 $button-font: $mont;
-$button-font-size: 1rem;
-$button-font-weight: bold;
+$button-font-size: 1.875rem;
+$button-font-weight: normal;
 $button-line-height: 1;
-$button-border-radius: 6px;
-$button-padding: 1.25em 1.75em;
+$button-border-radius: 32px;
+$button-padding: 1.25rem 1.75rem;
 $button-padding-sm: 1em 1.25em;
 $button-min-width: 220px;
 $button-margin: 5px;

@@ -16,12 +16,11 @@ button {
   line-height: $button-line-height;
   color: $white;
   text-align: center;
-  background-color: $red;
-  border-color: $red;
-  border-style: solid;
-  border-width: 1px;
+  background-color: $green;
+  border: none;
   border-radius: $button-border-radius;
-  transition: color 0.3s, background-color 0.3s, border 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 14px 4px rgba($green, 0.4);
+  transition: transform 0.3s;
   transition-timing-function: ease;
 
   @include max-width($touch) {
@@ -29,27 +28,8 @@ button {
   }
 
   &:hover {
-    color: $red;
-    background-color: transparent;
-  }
-
-  &:focus {
-    outline: transparent;
-    box-shadow: 0 0 2px 2px rgba($color: $red, $alpha: 0.5);
-  }
-
-  &.button--invert {
-    color: $red;
-    background-color: transparent;
-
-    &:hover {
-      color: $white;
-      background-color: $red;
-    }
-  }
-
-  svg {
-    transition: fill 0.3s, transform 0.3s;
+    color: $white;
+    transform: scale(1.01);
   }
 
   &--small {
