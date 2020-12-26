@@ -8,3 +8,5 @@ import './modules/polyfills/forEach';
 import './modules/polyfills/closest';
 
 // modules
+import './modules/mask';
+import './modules/constructor';
