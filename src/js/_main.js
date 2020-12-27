@@ -10,3 +10,4 @@ import './modules/polyfills/closest';
 // modules
 import './modules/mask';
 import './modules/constructor';
+import './modules/Scroll';
