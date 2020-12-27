@@ -3,7 +3,15 @@
 }
 
 body {
-  background-color: $black;
+  background: url(../img/BG.jpg), $black;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  @include max-width(600px) {
+    background: url(../img/BG_mobile.jpg), $black;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 }
 
 .container {

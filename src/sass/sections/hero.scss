@@ -17,19 +17,19 @@
     padding: 220px 0 20px;
   }
 
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url(../img/hero_bg-1.png);
-    background-size: cover;
-    background-position: center right;
-    background-repeat: no-repeat;
-    z-index: -1;
-  }
+  // &::after {
+  //   content: '';
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   right: 0;
+  //   bottom: 0;
+  //   background-image: url(../img/hero_bg-1.png);
+  //   background-size: cover;
+  //   background-position: center right;
+  //   background-repeat: no-repeat;
+  //   z-index: -1;
+  // }
 }
 
 .hero-wrapper {
