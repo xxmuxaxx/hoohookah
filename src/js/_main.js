@@ -11,3 +11,4 @@ import './modules/polyfills/closest';
 import './modules/mask';
 import './modules/constructor';
 import './modules/Scroll';
+import './modules/Modal';

@@ -63,7 +63,7 @@
           <!-- constructor-wrapper -->
           <div class="constructor-wrapper">
             <!-- constructor-form -->
-            <form class="constructor-form" data-constructor="hookah">
+            <form class="constructor-form" id="constructorForm" data-constructor="hookah">
               <h5 class="constructor-form__title">ВЫБОР КОМПЛЕКТУЮЩИХ</h5>
               <div class="constructor-form__group">
                 <p class="constructor-form__name">Шахта+основание:</p>
@@ -208,7 +208,7 @@
               </div>
               <div class="constructor-form__group constructor-form__button">
                 <p class="constructor-form__name"></p>
-                <button class="button button--small">Оформить доставку</button>
+                <button class="button button--small" data-modal-target="#modal">Оформить доставку</button>
               </div>
             </form>
             <!-- ./ End of constructor-form -->
@@ -250,5 +250,6 @@
       </section>
       <!-- ./ End of constructor -->
     </main>
+    ${require(`./modules/modal.html`)}
   </body>
 </html>
