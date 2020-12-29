@@ -6,7 +6,7 @@
 }
 
 .constructor-title {
-  margin: 0 0 100px 0;
+  margin: 0 0 40px 0;
   max-width: 600px;
   font-weight: bold;
   font-size: 4.5rem;
@@ -122,6 +122,10 @@
     @include max-width(480px) {
       margin: 1px;
     }
+
+    .radio__custom {
+      background-color: $white;
+    }
   }
 
   &__total {
@@ -185,6 +189,7 @@
     position: sticky;
     top: 10px;
     border-radius: 15px;
+    background-color: $white;
     overflow: hidden;
   }
 
