@@ -193,6 +193,18 @@
     overflow: hidden;
   }
 
+  &__images {
+    &--fixed {
+      .constructor-image__image.active {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+    }
+  }
+
   &__images:not(:first-child) {
     position: absolute;
     top: 0;

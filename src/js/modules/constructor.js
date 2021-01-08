@@ -16,14 +16,23 @@ class Constructor {
       option.addEventListener('click', function(event) {
         if (event.target.dataset.option) {
           const images = document.querySelector(`[data-images="${name}"]`);
+          const options = document.querySelector(`[data-options="${name}"]`);
 
-          images.querySelectorAll('img').forEach((image) => {
-            if (image.dataset.image === event.target.dataset.option) {
-              image.classList.add('active');
+          options.querySelectorAll('input').forEach((option, index) => {
+            if (option.checked) {
+              images.querySelectorAll('img')[index].classList.add('active');
             } else {
-              image.classList.remove('active');
+              images.querySelectorAll('img')[index].classList.remove('active');
             }
           });
+
+          // images.querySelectorAll('img').forEach((image) => {
+          //   if (image.dataset.image === event.target.dataset.option) {
+          //     image.classList.add('active');
+          //   } else {
+          //     image.classList.remove('active');
+          //   }
+          // });
         }
       });
     });

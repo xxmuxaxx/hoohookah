@@ -32,6 +32,18 @@ button {
     transform: scale(1.01);
   }
 
+  &:disabled {
+    color: $black;
+    background-color: $dark-gray;
+    box-shadow: none;
+    cursor: not-allowed;
+
+    &:hover {
+      color: $black;
+      transform: none;
+    }
+  }
+
   &--small {
     min-width: $button-small-min-width;
     padding: $button-small-padding;
