@@ -69,7 +69,15 @@
                 <p class="constructor-form__name">Шахта+основание:</p>
                 <div class="constructor-form__radios" data-options="base">
                   <label class="constructor-form__radio radio radio--big">
-                    <input class="radio__input" type="radio" name="base" value="1" data-option="1" checked />
+                    <input
+                      class="radio__input"
+                      type="radio"
+                      name="base"
+                      value="1"
+                      data-option="1"
+                      data-price="100"
+                      checked
+                    />
                     <div class="radio__custom">
                       <img src="./img/min/honey.png" class="radio__image" />
                     </div>
@@ -80,13 +88,21 @@
                 <p class="constructor-form__name">Колба:</p>
                 <div class="constructor-form__radios" data-options="flask">
                   <label class="constructor-form__radio radio radio--big">
-                    <input class="radio__input" type="radio" name="flask" value="1" data-option="1" checked />
+                    <input
+                      class="radio__input"
+                      type="radio"
+                      name="flask"
+                      value="1"
+                      data-option="1"
+                      data-price="100"
+                      checked
+                    />
                     <div class="radio__custom">
                       <img src="./img/min/kolba_c.png" class="radio__image" />
                     </div>
                   </label>
                   <label class="constructor-form__radio radio radio--big">
-                    <input class="radio__input" type="radio" name="flask" value="2" data-option="2" />
+                    <input class="radio__input" type="radio" name="flask" value="2" data-price="1000" data-option="2" />
                     <div class="radio__custom">
                       <img src="./img/min/kolba_d.png" class="radio__image" />
                     </div>
@@ -97,7 +113,15 @@
                 <p class="constructor-form__name">Комплектующие:</p>
                 <div class="constructor-form__radios" data-options="сomponents">
                   <label class="constructor-form__radio radio radio--big">
-                    <input class="radio__input" type="radio" name="сomponents" value="1" data-option="1" checked />
+                    <input
+                      class="radio__input"
+                      type="radio"
+                      name="сomponents"
+                      value="1"
+                      data-option="1"
+                      data-price="100"
+                      checked
+                    />
                     <div class="radio__custom">
                       <img src="./img/min/shlang.png" class="radio__image" />
                     </div>
@@ -108,13 +132,27 @@
                 <p class="constructor-form__name">Аксессуары:</p>
                 <div class="constructor-form__radios" data-options="accessories">
                   <label class="constructor-form__radio radio radio--big">
-                    <input class="radio__input" type="checkbox" name="accessories" value="1" data-option="1" />
+                    <input
+                      class="radio__input"
+                      type="checkbox"
+                      name="accessories"
+                      value="1"
+                      data-option="1"
+                      data-price="1200"
+                    />
                     <div class="radio__custom">
                       <img src="./img/min/kalaud.png" class="radio__image" />
                     </div>
                   </label>
                   <label class="constructor-form__radio radio radio--big">
-                    <input class="radio__input" type="checkbox" name="accessories" value="2" data-option="2" />
+                    <input
+                      class="radio__input"
+                      type="checkbox"
+                      name="accessories"
+                      value="2"
+                      data-option="2"
+                      data-price="600"
+                    />
                     <div class="radio__custom">
                       <img src="./img/min/blade.png" class="radio__image" />
                     </div>
@@ -130,8 +168,10 @@
                   <div class="constructor-form__group">
                     <p class="constructor-form__name constructor-form__name--width-auto">Итого:</p>
                     <div class="constructor-form__total">
-                      <p class="constructor-form__total-old">2399 руб</p>
-                      <p class="constructor-form__total-price">1399 руб</p>
+                      <p class="constructor-form__total-old" data-total-old="2399"><span>2399</span> руб</p>
+                      <p class="constructor-form__total-price">
+                        <span id="total-price" data-total="1399">1399</span> руб
+                      </p>
                     </div>
                   </div>
                 </div>

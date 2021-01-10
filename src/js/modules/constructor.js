@@ -1,15 +1,24 @@
+const { CountUp } = require('countup.js');
+
 class Constructor {
   constructor(options) {
     this.constructor = options.constructor;
     this.id = options.id;
     this.options = options.options;
 
-    // console.log(this);
-
     this.init();
   }
 
   init() {
+    const selectedOptionsPrices = [...document.querySelectorAll('[data-price]:checked')];
+    const totalPrice = document.querySelector('#total-price');
+    totalPrice.dataset.total = selectedOptionsPrices.reduce((a, i) => (a += Number(i.dataset.price)), 0);
+    const countUp = new CountUp('total-price', Number(totalPrice.dataset.total), {
+      startVal: Number(totalPrice.dataset.total),
+    });
+
+    countUp.start();
+
     this.options.forEach((option) => {
       const name = option.getAttribute('data-options');
 
@@ -26,13 +35,14 @@ class Constructor {
             }
           });
 
-          // images.querySelectorAll('img').forEach((image) => {
-          //   if (image.dataset.image === event.target.dataset.option) {
-          //     image.classList.add('active');
-          //   } else {
-          //     image.classList.remove('active');
-          //   }
-          // });
+          const selectedOptionsPrices = document.querySelectorAll('[data-price]:checked');
+          let totalPrice = 0;
+
+          selectedOptionsPrices.forEach((item) => {
+            totalPrice += Number(item.dataset.price);
+          });
+
+          countUp.update(totalPrice);
         }
       });
     });
