@@ -65,100 +65,123 @@
             <!-- constructor-form -->
             <form class="constructor-form" id="constructorForm" data-constructor="hookah">
               <h5 class="constructor-form__title">ВЫБОР КОМПЛЕКТУЮЩИХ</h5>
+
               <div class="constructor-form__group">
                 <p class="constructor-form__name">Шахта+основание:</p>
-                <div class="constructor-form__radios" data-options="base">
-                  <label class="constructor-form__radio radio radio--big">
-                    <input
-                      class="radio__input"
-                      type="radio"
-                      name="base"
-                      value="1"
-                      data-option="1"
-                      data-price="100"
-                      checked
-                    />
-                    <div class="radio__custom">
-                      <img src="./img/min/honey.png" class="radio__image" />
-                    </div>
-                  </label>
+                <div class="constructor-form__radios swiper-container wow wobble" data-options="base">
+                  <div class="swiper-wrapper">
+                    <label class="constructor-form__radio radio radio--big swiper-slide">
+                      <input
+                        class="radio__input"
+                        type="radio"
+                        name="base"
+                        value="1"
+                        data-option="1"
+                        data-price="100"
+                        checked
+                      />
+                      <div class="radio__custom">
+                        <img src="./img/min/honey.png" class="radio__image" />
+                      </div>
+                    </label>
+                  </div>
                 </div>
               </div>
+
               <div class="constructor-form__group">
                 <p class="constructor-form__name">Колба:</p>
-                <div class="constructor-form__radios" data-options="flask">
-                  <label class="constructor-form__radio radio radio--big">
-                    <input
-                      class="radio__input"
-                      type="radio"
-                      name="flask"
-                      value="1"
-                      data-option="1"
-                      data-price="100"
-                      checked
-                    />
-                    <div class="radio__custom">
-                      <img src="./img/min/kolba_c.png" class="radio__image" />
-                    </div>
-                  </label>
-                  <label class="constructor-form__radio radio radio--big">
-                    <input class="radio__input" type="radio" name="flask" value="2" data-price="1000" data-option="2" />
-                    <div class="radio__custom">
-                      <img src="./img/min/kolba_d.png" class="radio__image" />
-                    </div>
-                  </label>
+
+                <div class="constructor-form__radios swiper-container wow wobble" data-options="flask">
+                  <div class="swiper-wrapper">
+                    <label class="constructor-form__radio radio radio--big swiper-slide">
+                      <input
+                        class="radio__input"
+                        type="radio"
+                        name="flask"
+                        value="1"
+                        data-option="1"
+                        data-price="100"
+                        checked
+                      />
+                      <div class="radio__custom">
+                        <img src="./img/min/kolba_c.png" class="radio__image" />
+                      </div>
+                    </label>
+
+                    <label class="constructor-form__radio radio radio--big swiper-slide">
+                      <input
+                        class="radio__input"
+                        type="radio"
+                        name="flask"
+                        value="2"
+                        data-price="1000"
+                        data-option="2"
+                      />
+                      <div class="radio__custom">
+                        <img src="./img/min/kolba_d.png" class="radio__image" />
+                      </div>
+                    </label>
+                  </div>
                 </div>
               </div>
+
               <div class="constructor-form__group">
                 <p class="constructor-form__name">Комплектующие:</p>
-                <div class="constructor-form__radios" data-options="сomponents">
-                  <label class="constructor-form__radio radio radio--big">
-                    <input
-                      class="radio__input"
-                      type="radio"
-                      name="сomponents"
-                      value="1"
-                      data-option="1"
-                      data-price="100"
-                      checked
-                    />
-                    <div class="radio__custom">
-                      <img src="./img/min/shlang.png" class="radio__image" />
-                    </div>
-                  </label>
+                <div class="constructor-form__radios swiper-container wow wobble" data-options="сomponents">
+                  <div class="swiper-wrapper">
+                    <label class="constructor-form__radio radio radio--big swiper-slide">
+                      <input
+                        class="radio__input"
+                        type="radio"
+                        name="сomponents"
+                        value="1"
+                        data-option="1"
+                        data-price="100"
+                        checked
+                      />
+                      <div class="radio__custom">
+                        <img src="./img/min/shlang.png" class="radio__image" />
+                      </div>
+                    </label>
+                  </div>
                 </div>
               </div>
+
               <div class="constructor-form__group">
                 <p class="constructor-form__name">Аксессуары:</p>
-                <div class="constructor-form__radios" data-options="accessories">
-                  <label class="constructor-form__radio radio radio--big">
-                    <input
-                      class="radio__input"
-                      type="checkbox"
-                      name="accessories"
-                      value="1"
-                      data-option="1"
-                      data-price="1200"
-                    />
-                    <div class="radio__custom">
-                      <img src="./img/min/kalaud.png" class="radio__image" />
-                    </div>
-                  </label>
-                  <label class="constructor-form__radio radio radio--big">
-                    <input
-                      class="radio__input"
-                      type="checkbox"
-                      name="accessories"
-                      value="2"
-                      data-option="2"
-                      data-price="600"
-                    />
-                    <div class="radio__custom">
-                      <img src="./img/min/blade.png" class="radio__image" />
-                    </div>
-                  </label>
+                <div class="constructor-form__radios swiper-container wow wobble" data-options="accessories">
+                  <div class="swiper-wrapper">
+                    <label class="constructor-form__radio radio radio--big swiper-slide">
+                      <input
+                        class="radio__input"
+                        type="checkbox"
+                        name="accessories"
+                        value="1"
+                        data-option="1"
+                        data-price="1200"
+                      />
+                      <div class="radio__custom">
+                        <img src="./img/min/kalaud.png" class="radio__image" />
+                      </div>
+                    </label>
+
+                    <label class="constructor-form__radio radio radio--big swiper-slide">
+                      <input
+                        class="radio__input"
+                        type="checkbox"
+                        name="accessories"
+                        value="2"
+                        data-option="2"
+                        data-price="600"
+                      />
+                      <div class="radio__custom">
+                        <img src="./img/min/blade.png" class="radio__image" />
+                      </div>
+                    </label>
+                  </div>
                 </div>
               </div>
+
               <div class="constructor-form__group-row">
                 <div class="constructor-form__group">
                   <p class="constructor-form__name">Промокод:</p>
@@ -176,6 +199,7 @@
                   </div>
                 </div>
               </div>
+
               <div class="constructor-form__group constructor-form__delivery">
                 <p class="constructor-form__name">Доставка:</p>
                 <div class="constructor-form__radios">
@@ -194,10 +218,12 @@
                   </label>
                 </div>
               </div>
+
               <div class="constructor-form__group">
                 <p class="constructor-form__name">Номер:</p>
                 <input type="text" class="input j_mask" placeholder="+7 (___) ___-__-__" />
               </div>
+
               <div class="constructor-form__group constructor-form__button">
                 <p class="constructor-form__name"></p>
                 <button class="button button--small">Заказать</button>

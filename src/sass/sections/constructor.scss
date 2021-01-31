@@ -32,6 +32,12 @@
 }
 
 .constructor-form {
+  width: 60%;
+
+  @include max-width(900px) {
+    width: 100%;
+  }
+
   &__title {
     margin: 0 0 30px 0;
     max-width: 400px;
@@ -47,6 +53,7 @@
   }
 
   &__group {
+    position: relative;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -104,23 +111,59 @@
   }
 
   &__radios {
-    margin: -5px;
-
-    @include max-width(480px) {
-      margin: -1px;
-    }
+    position: relative;
+    width: 100%;
+    overflow: hidden;
   }
 
   &__radio {
-    margin: 5px;
-
-    @include max-width(480px) {
-      margin: 1px;
-    }
+    overflow: hidden;
 
     .radio__custom {
       background-color: $white;
     }
+
+    &.swiper-slide {
+      .radio__custom {
+        width: 100%;
+        min-width: unset;
+        height: 100%;
+        min-height: unset;
+      }
+    }
+  }
+
+  &__button-prev:after,
+  &__button-next:after {
+    content: '';
+    position: absolute;
+    display: block;
+    height: 8px;
+    width: 20px;
+    background-color: #ffffff;
+    transform: translateY(-4px) rotate(-45deg);
+    transition: width 0.3s;
+  }
+
+  &__button-prev:before,
+  &__button-next:before {
+    content: '';
+    position: absolute;
+    display: block;
+    height: 8px;
+    width: 20px;
+    background-color: #ffffff;
+    transform: translateY(4px) rotate(45deg);
+    transition: width 0.3s;
+  }
+
+  &__button-prev {
+    left: 0;
+  }
+
+  &__button-next {
+    right: 0;
+    transform: rotate(180deg);
   }
 
   &__total {
@@ -168,7 +211,7 @@
 .constructor-image {
   position: relative;
   margin: 40px 0 0 50px;
-  flex: 1;
+  width: 40%;
 
   @include max-width(900px) {
     margin: 0 auto 40px auto;

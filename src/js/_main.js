@@ -1,3 +1,6 @@
+// libs
+import WOW from 'wow.js';
+
 // default
 import './../sass/styles.scss';
 import './modules/_svg';
@@ -12,3 +15,5 @@ import './modules/mask';
 import './modules/constructor';
 import './modules/Scroll';
 import './modules/Modal';
+
+new WOW().init();
