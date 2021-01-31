@@ -24,10 +24,22 @@
 }
 
 .logo {
+  display: block;
+  color: $white;
+
   &__link {
     font-weight: bold;
     font-size: 2rem;
-    color: $white;
+  }
+
+  &__text {
+    margin: 5px 0 0 0;
+    width: 100%;
+    text-align-last: justify;
+  }
+
+  &:hover {
+    color: $green;
   }
 }
 

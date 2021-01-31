@@ -105,6 +105,11 @@ button {
       box-shadow: 0 5px 10px rgba($color, 0.7);
     }
   }
+
+  &--red {
+    background-color: $red;
+    box-shadow: 0 4px 14px 4px rgba($red, 0.4);
+  }
 }
 
 /* Inputs && Textareas */

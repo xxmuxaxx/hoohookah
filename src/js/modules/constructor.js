@@ -15,6 +15,7 @@ class Constructor {
     totalPrice.dataset.total = selectedOptionsPrices.reduce((a, i) => (a += Number(i.dataset.price)), 0);
     const countUp = new CountUp(this.constructor.querySelector('#total-price'), Number(totalPrice.dataset.total), {
       startVal: Number(totalPrice.dataset.total),
+      useGrouping: false,
     });
 
     countUp.start();
