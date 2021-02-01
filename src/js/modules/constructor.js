@@ -1,10 +1,14 @@
 const { CountUp } = require('countup.js');
 
+const _instance = {};
+
 class Constructor {
   constructor(options) {
     this.constructor = options.constructor;
     this.id = options.id;
     this.options = options.options;
+    this.price = this.constructor.querySelector('.constructor-form__total-price');
+    this.priceOld = this.constructor.querySelector('.constructor-form__total-old');
 
     this.init();
   }
@@ -13,12 +17,12 @@ class Constructor {
     const selectedOptionsPrices = [...this.constructor.querySelectorAll('[data-price]:checked')];
     const totalPrice = this.constructor.querySelector('#total-price');
     totalPrice.dataset.total = selectedOptionsPrices.reduce((a, i) => (a += Number(i.dataset.price)), 0);
-    const countUp = new CountUp(this.constructor.querySelector('#total-price'), Number(totalPrice.dataset.total), {
+    this.countUp = new CountUp(this.constructor.querySelector('#total-price'), Number(totalPrice.dataset.total), {
       startVal: Number(totalPrice.dataset.total),
       useGrouping: false,
     });
 
-    countUp.start();
+    this.countUp.start();
 
     this.options.forEach((option) => {
       const name = option.getAttribute('data-options');
@@ -45,11 +49,28 @@ class Constructor {
               totalPrice += Number(item.dataset.price);
             });
 
-            countUp.update(totalPrice);
+            this.countUp.update(totalPrice);
           }
         }.bind(this)
       );
     });
+
+    this.constructor.addEventListener('reset', () => {
+      setTimeout(() => {
+        const selectedOptionsPrices = this.constructor.querySelectorAll('[data-price]:checked');
+        let totalPrice = 0;
+
+        selectedOptionsPrices.forEach((item) => {
+          totalPrice += Number(item.dataset.price);
+        });
+
+        this.countUp.update(totalPrice);
+
+        Constructor.setNormal(this.id);
+      }, 100);
+    });
+
+    _instance[this.id] = this;
   }
 
   static initAll() {
@@ -67,6 +88,20 @@ class Constructor {
       });
     });
   }
+
+  static setPromo(id, newPrice) {
+    _instance[id].priceOld.innerHTML = _instance[id].price.innerHTML;
+    _instance[id].priceOld.style.display = 'inline-block';
+
+    _instance[id].price.innerHTML = `${newPrice} руб`;
+  }
+
+  static setNormal(id) {
+    _instance[id].price.innerHTML = _instance[id].priceOld.innerHTML;
+    _instance[id].priceOld.style.display = '';
+  }
 }
+
+window.Constructor = Constructor;
 
 Constructor.initAll();

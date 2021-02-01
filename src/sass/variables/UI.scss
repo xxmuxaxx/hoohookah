@@ -1,7 +1,4 @@
 /* Buttons */
-button {
-  cursor: pointer;
-}
 
 .button {
   display: inline-flex;
@@ -22,6 +19,7 @@ button {
   box-shadow: 0 4px 14px 4px rgba($green, 0.4);
   transition: transform 0.3s;
   transition-timing-function: ease;
+  cursor: pointer;
 
   @include max-width($touch) {
     padding: $button-padding-sm;
