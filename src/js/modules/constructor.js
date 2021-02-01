@@ -60,6 +60,20 @@ class Constructor {
         const selectedOptionsPrices = this.constructor.querySelectorAll('[data-price]:checked');
         let totalPrice = 0;
 
+        this.options.forEach((option) => {
+          const name = option.getAttribute('data-options');
+          const images = document.querySelector(`[data-images="${name}"]`);
+          const options = document.querySelector(`[data-options="${name}"]`);
+
+          options.querySelectorAll('input').forEach((option, index) => {
+            if (option.checked) {
+              images.querySelectorAll('img')[index].classList.add('active');
+            } else {
+              images.querySelectorAll('img')[index].classList.remove('active');
+            }
+          });
+        });
+
         selectedOptionsPrices.forEach((item) => {
           totalPrice += Number(item.dataset.price);
         });
@@ -97,7 +111,6 @@ class Constructor {
   }
 
   static setNormal(id) {
-    _instance[id].price.innerHTML = _instance[id].priceOld.innerHTML;
     _instance[id].priceOld.style.display = '';
   }
 }
