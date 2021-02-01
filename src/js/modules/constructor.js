@@ -7,7 +7,7 @@ class Constructor {
     this.constructor = options.constructor;
     this.id = options.id;
     this.options = options.options;
-    this.price = this.constructor.querySelector('.constructor-form__total-price');
+    this.price = this.constructor.querySelector('#total-price');
     this.priceOld = this.constructor.querySelector('.constructor-form__total-old');
 
     this.init();
@@ -93,7 +93,7 @@ class Constructor {
     _instance[id].priceOld.innerHTML = _instance[id].price.innerHTML;
     _instance[id].priceOld.style.display = 'inline-block';
 
-    _instance[id].price.innerHTML = `${newPrice} руб`;
+    _instance[id].price.innerHTML = `${newPrice}`;
   }
 
   static setNormal(id) {
