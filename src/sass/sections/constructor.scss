@@ -166,6 +166,16 @@
     }
   }
 
+  &__slider {
+    position: relative;
+    padding: 0 40px;
+    width: calc(100% - 215px);
+
+    @include max-width(600px) {
+      width: 100%;
+    }
+  }
+
   &__radios {
     position: relative;
     width: 100%;

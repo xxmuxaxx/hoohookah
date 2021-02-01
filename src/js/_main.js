@@ -15,5 +15,6 @@ import './modules/mask';
 import './modules/constructor';
 import './modules/Scroll';
 import './modules/Tab';
+import './modules/Modal';
 
 new WOW().init();

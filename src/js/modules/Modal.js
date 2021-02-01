@@ -9,10 +9,8 @@ export default class Modal extends ClassToggler {
     super(options);
 
     // Кастомные опции (свойства необходимые только для этого класса)
-    this.openOnLoad =
-      options.$el.hasAttribute('data-open-on-load') || options.openOnLoad;
-    this.openOnFocus =
-      options.$el.hasAttribute('data-open-on-focus') || options.openOnFocus;
+    this.openOnLoad = options.$el.hasAttribute('data-open-on-load') || options.openOnLoad;
+    this.openOnFocus = options.$el.hasAttribute('data-open-on-focus') || options.openOnFocus;
     this.$el = options.$el;
     this._zIndex = 10;
     this.init();
@@ -21,11 +19,11 @@ export default class Modal extends ClassToggler {
   init() {
     if (this.openOnLoad) this.open();
 
-    this.$el.addEventListener('click', (e) => {
-      if (e.target === e.currentTarget) {
-        this.close();
-      }
-    });
+    // this.$el.addEventListener('click', (e) => {
+    //   if (e.target === e.currentTarget) {
+    //     this.close();
+    //   }
+    // });
 
     _instances[this.id] = this;
   }
@@ -49,9 +47,7 @@ export default class Modal extends ClassToggler {
   _incZIndex() {
     const zIndexArray = [];
 
-    Object.keys(_instances).forEach(
-      (key, i) => (zIndexArray[i] = _instances[key]._zIndex)
-    );
+    Object.keys(_instances).forEach((key, i) => (zIndexArray[i] = _instances[key]._zIndex));
 
     const biggestZindex = Math.max.apply(null, zIndexArray);
 
@@ -69,9 +65,7 @@ export default class Modal extends ClassToggler {
 
     $modals.forEach(($modal) => {
       const id = $modal.getAttribute('id');
-      const $triggers = document.querySelectorAll(
-        `[data-modal-target="#${id}"]`
-      );
+      const $triggers = document.querySelectorAll(`[data-modal-target="#${id}"]`);
 
       // eslint-disable-next-line no-new
       new Modal({
