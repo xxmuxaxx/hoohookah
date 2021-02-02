@@ -23,6 +23,7 @@ class Constructor {
     });
 
     this.countUp.start();
+    this.price.dataset.total = this.countUp.endVal;
 
     this.options.forEach((option) => {
       const name = option.getAttribute('data-options');
@@ -50,6 +51,7 @@ class Constructor {
             });
 
             this.countUp.update(totalPrice);
+            this.price.dataset.total = totalPrice;
           }
         }.bind(this)
       );
@@ -79,6 +81,7 @@ class Constructor {
         });
 
         this.countUp.update(totalPrice);
+        this.price.dataset.total = totalPrice;
 
         Constructor.setNormal(this.id);
       }, 100);
