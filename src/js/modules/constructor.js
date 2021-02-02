@@ -107,10 +107,11 @@ class Constructor {
   }
 
   static setPromo(id, newPrice) {
-    _instance[id].priceOld.innerHTML = _instance[id].price.innerHTML;
+    _instance[id].priceOld.innerHTML = _instance[id].price.dataset.total;
     _instance[id].priceOld.style.display = 'inline-block';
 
-    _instance[id].price.innerHTML = `${newPrice}`;
+    _instance[id].countUp.update(newPrice);
+    _instance[id].price.dataset.total = newPrice;
   }
 
   static setNormal(id) {
@@ -119,5 +120,6 @@ class Constructor {
 }
 
 window.Constructor = Constructor;
+window.Constructors = _instance;
 
 Constructor.initAll();
