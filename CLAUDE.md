@@ -17,24 +17,30 @@ Static single-page landing site for "Hoohookah", a hookah constructor (pick shaf
   - `npx prettier --write <file>`
 - There is no test suite (`npm test` just fails).
 
-Toolchain note: the dependencies are old (webpack 4, `node-sass` 4.x, `image-webpack-loader`), and `node-sass` 4 only builds on old Node versions (around Node 14 or earlier). On modern Node, `npm install` / `npm start` will likely fail until you switch to an older Node or replace `node-sass` with `sass`.
+Toolchain note: the build runs on modern Node (verified on Node 22) despite webpack 4. Two things make this work, and neither should be removed:
+
+- SCSS compiles with Dart Sass (`sass`, pinned to 1.32.x so the old `/` division syntax doesn't flood the output with deprecation warnings). It's wired in through `implementation: require('sass')` in the sass-loader options.
+- `webpack.config.js` patches `crypto.createHash` to swap webpack 4's hardcoded `md4` for `sha256`, because Node 17+ (OpenSSL 3) rejects `md4`. `output.hashFunction` alone doesn't cover every place webpack 4 uses it.
 
 Prettier settings to match: 120-char lines, single quotes, semicolons, ES5 trailing commas, `endOfLine: 'crlf'`.
 
 ## Architecture
 
 **Pages and entries.** Every `src/*.html` becomes an HtmlWebpackPlugin page. It gets the `main` chunk plus a chunk with the same basename (`index.html` gets `js/index.js`). Adding a page means adding `src/<name>.html` and a matching `entry` in `webpack.config.js` (`./src/js/_<name>.js`).
+
 - `src/js/_main.js` → `js/bundle.js`: shared code on every page. It imports the global SCSS (`src/sass/styles.scss`), the SVG sprite, polyfills and all the UI modules, and initializes WOW.js animations.
 - `src/js/_index.js`: page-specific code (the Swiper sliders).
 
 **HTML partials.** HTML goes through `html-loader?interpolate`, so pages include partials with `${require(`./sections/header.html`)}` (see `src/index.html`). Partials live in `src/sections/` and `src/modules/`. Image `src` paths in HTML are resolved by webpack.
 
 **Assets.**
+
 - SVGs in `src/svg/` are auto-imported (`src/js/modules/_svg.js`, `require.context`) into an inline sprite. Use them as `<svg><use xlink:href="#<filename>"></use></svg>`.
 - SVGs in `src/img/` and in node_modules are emitted as files.
 - Raster images → `images/`, fonts → `fonts/`, both keep their original names.
 
 **JS modules: data-attribute driven, self-initializing.** Each module in `src/js/modules/` scans the DOM on import and wires itself to data attributes. There is no central init. Most also register instances in a module-level `_instances` map keyed by the attribute value and expose the class on `window` (e.g. `window.Modal`, `window.TabsController`, `window.Constructor`/`window.Constructors`), so inline or external scripts can call static methods like `Modal.open(id)`, `TabsController.open(id, $trigger)`, `Constructor.setPromo(id, price)`.
+
 - `ClassToggler.js`: base class for open/close/toggle UI (open/close/toggle buttons, close on document click, `scroll-lock`, open/close callbacks). `Modal` extends it. `Dropdown`, `Menu` and `Select` exist but are not imported in `_main.js`.
 - `Tab.js`: `[data-tabs="<id>"]` holds `[data-tab="<n>"]` triggers, and they switch `[data-tabs-contents="<id>"] [data-tab-content="<n>"]` by toggling `.active`.
 - `constructor.js`: the core feature. On `form[data-constructor="<id>"]`, the total is the sum of `data-price` over checked inputs, animated with CountUp into `#total-price`. Each option group `[data-options="<name>"]` pairs with a preview container `[data-images="<name>"]`, and the image at the same index as the checked radio gets `.active`. Promo handling (`setPromo`/`setNormal`) shows the old price in `.constructor-form__total-old`.
