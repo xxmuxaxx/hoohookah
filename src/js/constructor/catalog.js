@@ -80,7 +80,7 @@ export const models = {
 };
 
 export const deliveryOptions = [
-  { id: 'pickup', title: 'Самовывоз', note: 'Москва, Ленинский проспект, 131', price: 0 },
+  { id: 'pickup', title: 'Самовывоз', note: 'Москва, Кальянный переулок, 7', price: 0 },
   { id: 'courier', title: 'Курьер по Москве', note: 'На следующий день', price: 390 },
   { id: 'russia', title: 'По России', note: 'СДЭК, 2–5 дней', price: 690 },
 ];
