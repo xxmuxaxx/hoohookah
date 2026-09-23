@@ -6,7 +6,6 @@ export function initPhoneMask() {
     ['input', 'focus', 'blur', 'keydown'].forEach((type) => input.addEventListener(type, mask));
 
     if (input.value !== '') {
-      // eslint-disable-next-line no-undef
       input.dispatchEvent(new Event('input'));
       input.blur();
     }
@@ -15,14 +14,7 @@ export function initPhoneMask() {
 
 function setCursorPosition(pos, elem) {
   elem.focus();
-  if (elem.setSelectionRange) elem.setSelectionRange(pos, pos);
-  else if (elem.createTextRange) {
-    const range = elem.createTextRange();
-    range.collapse(true);
-    range.moveEnd('character', pos);
-    range.moveStart('character', pos);
-    range.select();
-  }
+  elem.setSelectionRange(pos, pos);
 }
 
 function mask(event) {
@@ -32,11 +24,11 @@ function mask(event) {
   let val = this.value.replace(/\D/g, '');
 
   if (def.length >= val.length) val = def;
-  this.value = MATRIX.replace(/[_\d]/g, function(a) {
+  this.value = MATRIX.replace(/[_\d]/g, function (a) {
     return i < val.length ? val.charAt(i++) : a;
   });
   i = this.value.indexOf('_');
-  if (event.keyCode === 8) i = this.value.lastIndexOf(val.substr(-1)) + 1;
+  if (event.key === 'Backspace') i = this.value.lastIndexOf(val.slice(-1)) + 1;
   if (i !== -1) {
     i < 5 && (i = 3);
     this.value = this.value.slice(0, i);

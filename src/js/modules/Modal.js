@@ -61,7 +61,6 @@ export default class Modal extends ClassToggler {
 
 export function initModals() {
   document.querySelectorAll('.j_modal').forEach(($modal) => {
-    // eslint-disable-next-line no-new
     new Modal({
       id: $modal.id,
       $el: $modal,

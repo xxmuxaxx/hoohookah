@@ -1,19 +1,23 @@
+@use 'sass:color';
+@use '../variables/mixins';
+@use '../variables/variables';
+
 .hero-section {
   position: relative;
-  padding: 180px 0 60px;
   display: flex;
-  min-height: 100vh;
   align-items: center;
+  min-height: 100vh;
+  padding: 180px 0 60px;
 
-  @include max-width(900px) {
+  @include mixins.max-width(900px) {
     padding: 140px 0 40px;
   }
 
-  @include max-width(600px) {
+  @include mixins.max-width(600px) {
     padding: 120px 0 20px;
   }
 
-  @include max-width(480px) {
+  @include mixins.max-width(480px) {
     padding: 220px 0 20px;
   }
 
@@ -40,41 +44,41 @@
 }
 
 .hero-content {
-  max-width: 540px;
   z-index: 1;
+  max-width: 540px;
 
-  @include max-width(700px) {
+  @include mixins.max-width(700px) {
     max-width: unset;
   }
 
   &__title {
-    margin: 0 0 20px 0;
-    font-weight: bold;
+    margin: 0 0 20px;
     font-size: 3.75rem;
+    font-weight: bold;
     line-height: 1.2;
 
-    @include max-width(480px) {
+    @include mixins.max-width(480px) {
       font-size: 2.75rem;
     }
 
     b {
-      color: $green;
+      color: variables.$green;
     }
   }
 
   &__subtitle {
-    margin: 0 0 50px 0;
-    font-weight: 600;
+    margin: 0 0 50px;
     font-size: 1.875rem;
+    font-weight: 600;
     line-height: 1.2;
 
-    @include max-width(480px) {
-      margin: 0 0 20px 0;
+    @include mixins.max-width(480px) {
+      margin: 0 0 20px;
     }
   }
 
   &__prices {
-    margin: 0 0 50px 0;
+    margin: 0 0 50px;
   }
 
   &__price {
@@ -83,8 +87,8 @@
 
     b {
       padding: 0 5px;
-      background-color: $green;
       font-weight: bold;
+      background-color: variables.$green;
     }
   }
 
@@ -93,17 +97,17 @@
     flex-direction: row;
     align-items: center;
 
-    @include max-width(480px) {
+    @include mixins.max-width(480px) {
       flex-direction: column;
     }
 
     .button {
       margin: 0 0 0 30px;
 
-      @include max-width(480px) {
-        margin: 0 0 20px 0;
+      @include mixins.max-width(480px) {
         order: -1;
         width: 100%;
+        margin: 0 0 20px;
       }
     }
   }
@@ -114,13 +118,13 @@
   flex-direction: row;
 
   &__item {
-    padding: 10px;
     display: flex;
     width: 46px;
     min-width: 46px;
     height: 46px;
     min-height: 46px;
-    background-color: $black;
+    padding: 10px;
+    background-color: variables.$black;
     border-radius: 12px;
     transition: background-color 0.3s;
 
@@ -132,7 +136,7 @@
       background-color: #2e78a4;
 
       &:hover {
-        background-color: darken(#2e78a4, 10%);
+        background-color: color.adjust(#2e78a4, $lightness: -10%);
       }
     }
 
@@ -140,29 +144,29 @@
       background-color: #61a9de;
 
       &:hover {
-        background-color: darken(#61a9de, 10%);
+        background-color: color.adjust(#61a9de, $lightness: -10%);
       }
     }
   }
 
   &__svg {
-    height: 100%;
     width: 100%;
-    fill: $white;
+    height: 100%;
+    fill: variables.$white;
   }
 }
 
 .hero-image {
   margin-right: 130px;
 
-  @include max-width(900px) {
+  @include mixins.max-width(900px) {
     margin-right: 0;
   }
 
-  @include max-width(700px) {
+  @include mixins.max-width(700px) {
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
     z-index: 0;
+    transform: translateX(-50%);
   }
 }

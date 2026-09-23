@@ -1,14 +1,5 @@
 @mixin placeholder() {
-  &::-webkit-input-placeholder {
-    @content;
-  }
-  &:-moz-placeholder {
-    @content;
-  }
-  &::-moz-placeholder {
-    @content;
-  }
-  &:-ms-input-placeholder {
+  &::placeholder {
     @content;
   }
 }
@@ -56,10 +47,12 @@
   &::-webkit-scrollbar {
     width: $width;
   }
+
   &::-webkit-scrollbar-thumb {
     background: $color-thumb;
     border-radius: $border-radius;
   }
+
   &::-webkit-scrollbar-track {
     background: $color-track;
     border-radius: $border-radius;

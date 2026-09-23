@@ -1,20 +1,20 @@
 // Extensions - Расширения
-@import 'extensions/reset';
+@use 'extensions/reset';
 
-// Libs - Библиотеки
-@import '~swiper/swiper-bundle.min.css';
-@import '~wow.js/css/libs/animate.css';
+// Libs - Библиотеки (before our styles so they can override them)
+@use 'swiper/css';
+@use 'swiper/css/navigation';
 
 // Variables - Переменные
-@import 'variables/fonts';
-@import 'variables/variables';
-@import 'variables/mixins';
-@import 'variables/global';
-@import 'variables/typography';
-@import 'variables/modals';
-@import 'variables/UI';
+@use 'variables/fonts';
+@use 'variables/variables';
+@use 'variables/mixins';
+@use 'variables/global';
+@use 'variables/typography';
+@use 'variables/modals';
+@use 'variables/UI';
 
 // Sections - Разделы сайта
-@import 'sections/header';
-@import 'sections/hero';
-@import 'sections/constructor';
+@use 'sections/header';
+@use 'sections/hero';
+@use 'sections/constructor';

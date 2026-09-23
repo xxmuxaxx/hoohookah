@@ -41,7 +41,6 @@ export function initTabs() {
 
     if (!$contentsWrap) return;
 
-    // eslint-disable-next-line no-new
     new TabsController({
       id,
       $triggers: [...$triggersWrap.querySelectorAll('[data-tab]')],

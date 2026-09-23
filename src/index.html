@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
@@ -10,7 +10,7 @@
     <title>Hoohookah</title>
   </head>
   <body>
-    ${require(`./sections/header.html`)}
+    <load src="./sections/header.html" />
     <main>
       <!-- hero -->
       <section class="hero-section">
@@ -32,12 +32,12 @@
                 <div class="social">
                   <a href="https://vk.com/publicxyxyka" class="social__item social__item--vk">
                     <svg class="social__svg">
-                      <use xlink:href="#vk"></use>
+                      <use href="#vk"></use>
                     </svg>
                   </a>
                   <a href="https://T.me/hoohooka" class="social__item social__item--telegram">
                     <svg class="social__svg">
-                      <use xlink:href="#telegram"></use>
+                      <use href="#telegram"></use>
                     </svg>
                   </a>
                 </div>
@@ -80,7 +80,7 @@
                   <p class="constructor-form__name">Шахта+основание:</p>
 
                   <div class="constructor-form__slider">
-                    <div class="constructor-form__radios swiper-container" data-options="base">
+                    <div class="constructor-form__radios swiper" data-options="base">
                       <div class="swiper-wrapper">
                         <label class="constructor-form__radio radio radio--big swiper-slide">
                           <input
@@ -108,7 +108,7 @@
                   <p class="constructor-form__name">Колба:</p>
 
                   <div class="constructor-form__slider">
-                    <div class="constructor-form__radios swiper-container" data-options="flask">
+                    <div class="constructor-form__radios swiper" data-options="flask">
                       <div class="swiper-wrapper">
                         <label class="constructor-form__radio radio radio--big swiper-slide">
                           <input
@@ -149,7 +149,7 @@
                 <div class="constructor-form__group">
                   <p class="constructor-form__name">Комплектующие:</p>
                   <div class="constructor-form__slider">
-                    <div class="constructor-form__radios swiper-container" data-options="components">
+                    <div class="constructor-form__radios swiper" data-options="components">
                       <div class="swiper-wrapper">
                         <label class="constructor-form__radio radio radio--big swiper-slide">
                           <input
@@ -177,7 +177,7 @@
                   <p class="constructor-form__name">Аксессуары:</p>
 
                   <div class="constructor-form__slider">
-                    <div class="constructor-form__radios swiper-container" data-options="accessories">
+                    <div class="constructor-form__radios swiper" data-options="accessories">
                       <div class="swiper-wrapper">
                         <label class="constructor-form__radio radio radio--big swiper-slide">
                           <input
@@ -223,10 +223,10 @@
                     <div class="constructor-form__group">
                       <p class="constructor-form__name constructor-form__name--width-auto">Итого:</p>
                       <div class="constructor-form__total">
-                        <p class="constructor-form__total-old" data-old-price><span data-old-price-value>2399</span> руб</p>
-                        <p class="constructor-form__total-price">
-                          <span data-total-price>1399</span> руб
-                        </p>
+                        <p class="constructor-form__total-old" data-old-price
+                          ><span data-old-price-value>2399</span> руб</p
+                        >
+                        <p class="constructor-form__total-price"> <span data-total-price>1399</span> руб </p>
                       </div>
                     </div>
                   </div>
@@ -310,6 +310,8 @@
       </section>
       <!-- ./ End of constructor -->
     </main>
-    ${require(`./modules/modal.html`)}
+    <load src="./modules/modal.html" />
+    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/index.js"></script>
   </body>
 </html>

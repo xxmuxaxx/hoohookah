@@ -1,47 +1,50 @@
+@use '../variables/mixins';
+@use '../variables/variables';
+
 .constructor-section {
   overflow: hidden;
 }
 
 .constructor-title {
-  margin: 0 0 40px 0;
   max-width: 600px;
-  font-weight: bold;
+  margin: 0 0 40px;
   font-size: 4.5rem;
+  font-weight: bold;
   line-height: 1.2;
   text-transform: uppercase;
 
-  @include max-width(900px) {
-    margin: 0 0 40px 0;
+  @include mixins.max-width(900px) {
+    margin: 0 0 40px;
   }
 
-  @include max-width(480px) {
-    margin: 0 0 10px 0;
+  @include mixins.max-width(480px) {
+    margin: 0 0 10px;
     font-size: 2.75rem;
   }
 
   b {
-    color: $green;
+    color: variables.$green;
   }
 }
 
 .constructor-tabs {
-  margin: 0 0 20px 0;
   display: flex;
+  margin: 0 0 20px;
 }
 
 .constructor-tab {
+  cursor: pointer;
   border-radius: 0;
   opacity: 0.3;
   transition: opacity 0.3s;
-  cursor: pointer;
 
-  @include max-width(900px) {
+  @include mixins.max-width(900px) {
     flex: 1;
   }
 
-  @include max-width(500px) {
-    padding: 15px 10px;
+  @include mixins.max-width(500px) {
     min-width: unset;
+    padding: 15px 10px;
   }
 
   &.active {
@@ -66,23 +69,25 @@
 .constructor-wrapper {
   position: absolute;
   top: 0;
-  display: flex;
-  flex-direction: row;
-  transform: translateX(-40px);
-  opacity: 0;
-  visibility: hidden;
   z-index: 1;
-  transition: transform 0.6s, opacity 0.6s;
+  display: flex;
+  visibility: hidden;
+  flex-direction: row;
+  opacity: 0;
+  transform: translateX(-40px);
+  transition:
+    transform 0.6s,
+    opacity 0.6s;
 
   &.active {
     position: relative;
-    opacity: 1;
-    visibility: visible;
     z-index: 2;
+    visibility: visible;
+    opacity: 1;
     transform: translateX(0);
   }
 
-  @include max-width(900px) {
+  @include mixins.max-width(900px) {
     flex-direction: column;
   }
 }
@@ -90,20 +95,20 @@
 .constructor-form {
   width: 60%;
 
-  @include max-width(900px) {
+  @include mixins.max-width(900px) {
     width: 100%;
   }
 
   &__title {
-    margin: 0 0 30px 0;
     max-width: 400px;
-    font-weight: bold;
+    margin: 0 0 30px;
     font-size: 2.5rem;
+    font-weight: bold;
     line-height: 1.4;
     text-transform: uppercase;
 
-    @include max-width(480px) {
-      margin: 0 0 10px 0;
+    @include mixins.max-width(480px) {
+      margin: 0 0 10px;
       font-size: 1.6rem;
     }
   }
@@ -114,23 +119,23 @@
     flex-direction: row;
     align-items: center;
 
-    @include max-width(600px) {
+    @include mixins.max-width(600px) {
       flex-direction: column;
       align-items: flex-start;
     }
 
     &:not(:last-of-type) {
-      margin: 0 0 10px 0;
+      margin: 0 0 10px;
     }
   }
 
   &__group-row {
-    margin: 10px 0;
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin: 10px 0;
 
-    @include max-width(600px) {
+    @include mixins.max-width(600px) {
       flex-direction: column;
       align-items: flex-start;
     }
@@ -141,23 +146,23 @@
       &:first-child {
         margin: 0 10px 0 0;
 
-        @include max-width(600px) {
-          margin: 0 0 20px 0;
+        @include mixins.max-width(600px) {
+          margin: 0 0 20px;
         }
       }
     }
   }
 
   &__name {
-    margin: 0 15px 0 0;
     min-width: 200px;
-    font-weight: 500;
+    margin: 0 15px 0 0;
     font-size: 1.25rem;
+    font-weight: 500;
     line-height: 1.2;
     text-align: right;
 
-    @include max-width(600px) {
-      margin: 0 0 10px 0;
+    @include mixins.max-width(600px) {
+      margin: 0 0 10px;
       text-align: left;
     }
 
@@ -168,10 +173,10 @@
 
   &__slider {
     position: relative;
-    padding: 0 40px;
     width: calc(100% - 215px);
+    padding: 0 40px;
 
-    @include max-width(600px) {
+    @include mixins.max-width(600px) {
       width: 100%;
     }
   }
@@ -186,7 +191,7 @@
     overflow: hidden;
 
     .radio__custom {
-      background-color: $white;
+      background-color: variables.$white;
     }
 
     &.swiper-slide {
@@ -199,26 +204,39 @@
     }
   }
 
-  &__button-prev:after,
-  &__button-next:after {
-    content: '';
+  // The arrows are drawn by :before/:after below, so hide Swiper's own icon, keep its old button width
+  // and put the buttons at the very edges
+  &__button-prev,
+  &__button-next {
+    --swiper-navigation-sides-offset: 0;
+
+    width: 27px;
+
+    .swiper-navigation-icon {
+      display: none;
+    }
+  }
+
+  &__button-prev::after,
+  &__button-next::after {
     position: absolute;
     display: block;
-    height: 8px;
     width: 20px;
-    background-color: #ffffff;
+    height: 8px;
+    content: '';
+    background-color: #fff;
     transform: translateY(-4px) rotate(-45deg);
     transition: width 0.3s;
   }
 
-  &__button-prev:before,
-  &__button-next:before {
-    content: '';
+  &__button-prev::before,
+  &__button-next::before {
     position: absolute;
     display: block;
-    height: 8px;
     width: 20px;
-    background-color: #ffffff;
+    height: 8px;
+    content: '';
+    background-color: #fff;
     transform: translateY(4px) rotate(45deg);
     transition: width 0.3s;
   }
@@ -233,28 +251,28 @@
   }
 
   &__total {
-    padding: 10px 0;
     width: 120px;
+    padding: 10px 0;
 
     &-old {
       position: relative;
       display: none;
-      margin: 0 -5px 5px -5px;
       padding: 0 5px;
+      margin: 0 -5px 5px;
       font-size: 1rem;
-      color: rgb(203, 203, 203);
       font-weight: 500;
+      color: rgb(203 203 203);
       white-space: nowrap;
 
       &::before {
-        content: '';
         position: absolute;
         top: 50%;
-        left: 0;
         right: 0;
-        height: 2px;
+        left: 0;
         width: 100%;
-        background-color: $red;
+        height: 2px;
+        content: '';
+        background-color: variables.$red;
       }
     }
 
@@ -266,56 +284,50 @@
   }
 
   &__delivery:not(:last-of-type) {
-    margin: 0 0 25px 0;
+    margin: 0 0 25px;
   }
 
   &__button {
-    margin: 25px 0 0 0;
+    margin: 25px 0 0;
   }
 }
 
 .constructor-image {
   position: relative;
-  margin: 40px 0 0 50px;
   width: 40%;
+  margin: 40px 0 0 50px;
 
-  @include max-width(900px) {
-    margin: 0 auto 40px auto;
-    max-width: 300px;
-    width: 100%;
+  @include mixins.max-width(900px) {
     order: -1;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto 40px;
   }
 
-  @include max-width(480px) {
-    margin: 0 auto 10px auto;
+  @include mixins.max-width(480px) {
+    margin: 0 auto 10px;
   }
 
   &__wrapper {
     position: sticky;
     top: 10px;
-    border-radius: 15px;
-    background-color: $white;
     overflow: hidden;
+    background-color: variables.$white;
+    border-radius: 15px;
   }
 
   &__images {
     &--fixed {
       .constructor-image__image.active {
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        inset: 0;
       }
     }
   }
 
   &__images:not(:first-child) {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
   }
 
   &__image {

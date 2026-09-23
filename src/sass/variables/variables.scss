@@ -1,3 +1,5 @@
+@use 'fonts';
+
 /* Colors */
 $white: #fff;
 $black: #000;
@@ -27,7 +29,7 @@ $section-padding-phone: 20px 0;
 
 /* Typography */
 // h1
-$h-one-font: $mont;
+$h-one-font: fonts.$mont;
 $h-one-font-size: 3rem;
 $h-one-font-size-sm: 2.5rem;
 $h-one-font-weight: bold;
@@ -36,7 +38,7 @@ $h-one-color: $white;
 $h-one-margin: 20px 0;
 
 // h2
-$h-two-font: $mont;
+$h-two-font: fonts.$mont;
 $h-two-font-size: 2.5rem;
 $h-two-font-size-sm: 2rem;
 $h-two-font-weight: bold;
@@ -45,7 +47,7 @@ $h-two-color: $white;
 $h-two-margin: 15px 0;
 
 // h3
-$h-three-font: $mont;
+$h-three-font: fonts.$mont;
 $h-three-font-size: 2rem;
 $h-three-font-size-sm: 1.5rem;
 $h-three-font-weight: bold;
@@ -54,7 +56,7 @@ $h-three-color: $white;
 $h-three-margin: 10px 0;
 
 // h4
-$h-four-font: $mont;
+$h-four-font: fonts.$mont;
 $h-four-font-size: 1.5rem;
 $h-four-font-size-sm: 1.25rem;
 $h-four-font-weight: bold;
@@ -63,7 +65,7 @@ $h-four-color: $white;
 $h-four-margin: 5px 0;
 
 // h5
-$h-five-font: $mont;
+$h-five-font: fonts.$mont;
 $h-five-font-size: 1.25rem;
 $h-five-font-size-sm: 1.25rem;
 $h-five-font-weight: bold;
@@ -72,7 +74,7 @@ $h-five-color: $white;
 $h-five-margin: 5px 0;
 
 // h6
-$h-six-font: $mont;
+$h-six-font: fonts.$mont;
 $h-six-font-size: 1rem;
 $h-six-font-size-sm: 1rem;
 $h-six-font-weight: bold;
@@ -82,7 +84,7 @@ $h-six-margin: 5px 0;
 
 /* UI */
 // button
-$button-font: $mont;
+$button-font: fonts.$mont;
 $button-font-size: 1.875rem;
 $button-font-weight: normal;
 $button-line-height: 1;
@@ -91,13 +93,12 @@ $button-padding: 1.25rem 1.75rem;
 $button-padding-sm: 1em 1.25em;
 $button-min-width: 220px;
 $button-margin: 0;
-
 $button-small-min-width: initial;
 $button-small-padding: 0.625em 1.25em;
 $button-small-font-size: 26px;
 
 // input
-$input-font: $mont;
+$input-font: fonts.$mont;
 $input-font-size: 1em;
 $input-font-weight: 500;
 $input-line-height: 1.2;
@@ -117,7 +118,7 @@ $textarea-height: 200px;
 $textarea-margin: 5px;
 
 // checkbox
-$checkbox-font: $mont;
+$checkbox-font: fonts.$mont;
 $checkbox-font-size: 1.125rem;
 $checkbox-font-weight: 400;
 $checkbox-line-height: 1;

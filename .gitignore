@@ -1,34 +1,19 @@
-# OS Files
+# OS files
 .DS_Store
 Thumbs.db
 
 # Dependencies
 node_modules/
 
-# Dev/Build Artifacts
+# Build output
 /public/
-/dist/
-/tests/e2e/videos/
-/tests/e2e/screenshots/
-/tests/unit/coverage/
-jsconfig.json
-.out
 
-# Local Env Files
+# Local env files
 .env.local
 .env.*.local
 
-# Log Files
+# Logs
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
-# Unconfigured Editors
+# Editors
 .idea
-*.suo
-.ntvs
-*.njsproj
-*.sln
-.sw
-

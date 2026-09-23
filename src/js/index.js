@@ -1,4 +1,4 @@
-// Code for index.html only (built as js/index.js)
+// Code for index.html only
 import { initConstructorSliders } from './modules/constructorSliders';
 
 initConstructorSliders();
