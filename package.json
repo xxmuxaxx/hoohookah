@@ -9,10 +9,7 @@
     "build": "webpack --mode production --colors --progress",
     "prestart": "rimraf public && npm install",
     "start": "webpack-dev-server --mode development --colors --progress",
-    "lint": "run-s lint:all",
-    "lint:all:eslint": "npm run lint:eslint --ext .js,",
-    "lint:all:prettier": "npm run lint:prettier \"**/*.{js,json,css,scss,html,md}\"",
-    "lint:all:stylelint": "npm run lint:stylelint \"src/**/*.{scss}\"",
+    "lint": "npm run lint:eslint -- src/js *.js && npm run lint:stylelint -- \"src/**/*.scss\"",
     "lint:eslint": "eslint --fix",
     "lint:prettier": "prettier --write --loglevel warn",
     "lint:stylelint": "stylelint --fix"
