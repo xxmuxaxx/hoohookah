@@ -3,6 +3,11 @@ const path = require('path');
 const argv = require('yargs').argv;
 const glob = require('glob');
 const address = require('address');
+const crypto = require('crypto');
+
+// webpack 4 hardcodes md4 hashing, which Node 17+ (OpenSSL 3) no longer supports
+const createHash = crypto.createHash;
+crypto.createHash = (algorithm, ...args) => createHash(algorithm === 'md4' ? 'sha256' : algorithm, ...args);
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
@@ -93,6 +98,7 @@ const config = {
           {
             loader: 'sass-loader',
             options: {
+              implementation: require('sass'),
               minimize: isCompressCss,
               outputStyle: 'expanded',
             },
