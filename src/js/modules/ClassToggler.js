@@ -1,190 +1,79 @@
-import Helper from './helpers/Helper';
 import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 
+const defaultOptions = {
+  $el: null,
+  $openBtns: [],
+  $closeBtns: [],
+  $toggleBtns: [],
+  // Elements whose class is switched together with $el, for example an overlay
+  $additionalElements: [],
+  activeClass: 'active',
+  closeOnDocumentClick: false,
+  scrollLock: false, // locks <body> scroll while open
+  openCallback() {},
+  closeCallback() {},
+};
+
+// Base for open/close UI: toggles `activeClass` on the element when its buttons are clicked
 export default class ClassToggler {
   constructor(options) {
     options = Object.assign({}, defaultOptions, options);
 
     this.$el = options.$el;
-    this.$openBtns = options.$openBtns;
-    this.$closeBtns = options.$closeBtns;
-    this.$toggleBtns = options.$toggleBtns;
-    this.$additionalElements = options.$additionalElements;
-    this.closeOnDocumentClick = options.closeOnDocumentClick;
-    this.htmlClass = options.htmlClass;
-
+    this.$openBtns = [...options.$openBtns];
+    this.$closeBtns = [...options.$closeBtns];
+    this.$toggleBtns = [...options.$toggleBtns];
+    this.$additionalElements = [...options.$additionalElements];
+    this.activeClass = options.activeClass;
+    this.scrollLock = options.scrollLock;
     this.openCallback = options.openCallback;
     this.closeCallback = options.closeCallback;
+    this.isOpen = false;
 
-    this._errors = options.errors;
+    this.$openBtns.forEach(($btn) => $btn.addEventListener('click', (e) => this.open(e)));
+    this.$closeBtns.forEach(($btn) => $btn.addEventListener('click', (e) => this.close(e)));
+    this.$toggleBtns.forEach(($btn) => $btn.addEventListener('click', (e) => this.toggle(e)));
 
-    this._isOpen = false;
-    this.scrollLock = options.scrollLock;
-
-    if (!options.id && !options.noId) {
-      this._setId();
-    } else {
-      this.id = options.id;
-    }
-
-    this.superInit();
-  }
-
-  superInit() {
-    // Bind toggle btns
-    if (this.$toggleBtns.length) {
-      this.$toggleBtns.forEach(($btn) =>
-        $btn.addEventListener('click', this.toggle.bind(this))
-      );
-    }
-
-    // bind open btns
-    if (this.$openBtns.length) {
-      this.$openBtns.forEach(($btn) =>
-        $btn.addEventListener('click', this.open.bind(this))
-      );
-    }
-
-    // bind close btns
-    if (this.$closeBtns.length) {
-      this.$closeBtns.forEach(($btn) =>
-        $btn.addEventListener('click', this.close.bind(this))
-      );
-    }
-
-    // bind close by document click
-    if (this.closeOnDocumentClick) {
-      document.addEventListener('click', this._documentClickHandler.bind(this));
+    if (options.closeOnDocumentClick) {
+      document.addEventListener('click', (e) => this._onDocumentClick(e));
     }
   }
 
   open(e) {
-    this.$el.classList.add(this.htmlClass);
+    this._elements().forEach(($el) => $el.classList.add(this.activeClass));
+    if (this.scrollLock) disablePageScroll(this.$el);
 
-    if (this.$additionalElements.length) {
-      this.$additionalElements.forEach(($el) =>
-        $el.classList.add(this.htmlClass)
-      );
-    }
-
-    if (this.scrollLock) {
-      disablePageScroll(this.$el);
-    }
-
-    // eslint-disable-next-line no-useless-call
-    this.openCallback.call(
-      this,
-      // eslint-disable-next-line no-void
-      e && e.currentTarget ? e.currentTarget : void 0
-    );
-
-    this._isOpen = true;
+    this.openCallback(e?.currentTarget);
+    this.isOpen = true;
   }
 
   close(e) {
-    this.$el.classList.remove(this.htmlClass);
+    this._elements().forEach(($el) => $el.classList.remove(this.activeClass));
+    if (this.scrollLock) enablePageScroll(this.$el);
 
-    if (this.$additionalElements.length) {
-      this.$additionalElements.forEach(($el) =>
-        $el.classList.remove(this.htmlClass)
-      );
-    }
-
-    if (this.scrollLock) {
-      enablePageScroll(this.$el);
-    }
-
-    // eslint-disable-next-line no-useless-call
-    this.closeCallback.call(
-      this,
-      // eslint-disable-next-line no-void
-      e && e.currentTarget ? e.currentTarget : void 0
-    );
-
-    this._isOpen = false;
+    this.closeCallback(e?.currentTarget);
+    this.isOpen = false;
   }
 
   toggle(e) {
-    if (!this._isOpen) {
-      this.open(e);
-    } else {
+    if (this.isOpen) {
       this.close(e);
+    } else {
+      this.open(e);
     }
   }
 
-  _documentClickHandler(e) {
-    // check, if e.target one of our btns (open, close or toggle);
-    if (this._isTargetTriggerBtns(e)) return false;
+  _elements() {
+    return [this.$el, ...this.$additionalElements];
+  }
 
-    const isTargetChildOfEl = Helper.isDescendant(this.$el, e.target);
+  _onDocumentClick(e) {
+    const $triggers = [...this.$openBtns, ...this.$closeBtns, ...this.$toggleBtns];
+    const isTriggerClick = $triggers.some(($btn) => $btn.contains(e.target));
 
-    if (this._isOpen && !isTargetChildOfEl) {
+    if (this.isOpen && !isTriggerClick && !this.$el.contains(e.target)) {
       this.close(e);
       e.preventDefault();
     }
   }
-
-  _isTargetTriggerBtns(e) {
-    // check, if e.target one of our btns (open, close or toggle);
-    const allTriggersBtns = [
-      ...this.$toggleBtns,
-      ...this.$openBtns,
-      ...this.$closeBtns,
-    ];
-
-    for (const $btn of allTriggersBtns) {
-      if (Helper.isDescendant($btn, e.target)) {
-        return true;
-      }
-    }
-  }
-
-  _setId() {
-    const id = this.$el.getAttribute('id');
-    if (!id) {
-      this._throwError('set_id');
-      return;
-    }
-
-    this.id = id;
-  }
-
-  _throwError(error, ...params) {
-    let errorText = this._errors[error];
-
-    // if (message.params) {
-    //   message.params.map((param) => {
-    //     msg = msg.replace('{}', param);
-    //   });
-    // }
-
-    if (!errorText) errorText = `Unknow error "${error}"`;
-
-    throw new Error(errorText);
-  }
 }
-
-const errors = {
-  set_id:
-    'You need set id, use "id" on html element, or pass it in options (must bee a uniq string)',
-};
-
-const defaultOptions = {
-  $el: undefined,
-  $openBtns: [],
-  $closeBtns: [],
-  $toggleBtns: [],
-
-  // Elements which class will be switched together with the $el,
-  // for example overlay
-  $additionalElements: [],
-  closeOnDocumentClick: false,
-  htmlClass: 'active',
-  errors: errors,
-  noId: false, // set true for single els (for example menu)
-  scrollLock: false, // locking <body> scroll
-
-  openCallback() {},
-
-  closeCallback() {},
-};

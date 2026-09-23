@@ -1,115 +1,74 @@
 import ClassToggler from './ClassToggler';
 
-const _instances = {};
+const BASE_Z_INDEX = 10;
+const instances = {};
 
+// Modals are `.j_modal` elements with an id. Buttons with `data-modal-target="#<id>"` toggle them,
+// `.j_closeModal` inside closes them. `data-open-on-load` / `data-open-on-focus` on the modal
+// open it on page load / focus its `.input` when opened.
 export default class Modal extends ClassToggler {
   constructor(options) {
-    // Обязательные опции
-    options = Object.assign({}, defaultOptions, options);
-    super(options);
+    super(Object.assign({ scrollLock: true }, options));
 
-    // Кастомные опции (свойства необходимые только для этого класса)
-    this.openOnLoad = options.$el.hasAttribute('data-open-on-load') || options.openOnLoad;
-    this.openOnFocus = options.$el.hasAttribute('data-open-on-focus') || options.openOnFocus;
-    this.$el = options.$el;
-    this._zIndex = 10;
-    this.init();
-  }
+    this.id = options.id;
+    this.openOnFocus = options.openOnFocus;
+    this._zIndex = BASE_Z_INDEX;
 
-  init() {
-    if (this.openOnLoad) this.open();
+    instances[this.id] = this;
 
-    // this.$el.addEventListener('click', (e) => {
-    //   if (e.target === e.currentTarget) {
-    //     this.close();
-    //   }
-    // });
-
-    _instances[this.id] = this;
+    if (options.openOnLoad) this.open();
   }
 
   open(e) {
-    super.open();
+    super.open(e);
 
     if (this.openOnFocus) {
       setTimeout(() => this.$el.querySelector('.input').focus(), 100);
     }
 
-    this._incZIndex();
+    // Stack above any modal that is already open
+    this._zIndex = Math.max(...Object.values(instances).map((modal) => modal._zIndex)) + 1;
+    this.$el.style.zIndex = this._zIndex;
   }
 
-  close() {
-    super.close();
+  close(e) {
+    super.close(e);
 
-    this._normilizeZIndex();
-  }
-
-  _incZIndex() {
-    const zIndexArray = [];
-
-    Object.keys(_instances).forEach((key, i) => (zIndexArray[i] = _instances[key]._zIndex));
-
-    const biggestZindex = Math.max.apply(null, zIndexArray);
-
-    this.$el.style.zIndex = biggestZindex + 1;
-    this._zIndex = biggestZindex + 1;
-  }
-
-  _normilizeZIndex() {
+    this._zIndex = BASE_Z_INDEX;
     this.$el.style.zIndex = '';
-    this._zIndex = 10;
-  }
-
-  static initAll() {
-    const $modals = document.querySelectorAll('.j_modal');
-
-    $modals.forEach(($modal) => {
-      const id = $modal.getAttribute('id');
-      const $triggers = document.querySelectorAll(`[data-modal-target="#${id}"]`);
-
-      // eslint-disable-next-line no-new
-      new Modal({
-        id: id,
-        $toggleBtns: $triggers,
-        $closeBtns: $modal.querySelectorAll('.j_closeModal'),
-        $el: $modal,
-      });
-    });
-  }
-
-  static closeAll() {
-    for (const id in _instances) {
-      _instances[id].close();
-    }
   }
 
   static open(id) {
-    _instances[id].open();
+    instances[id].open();
   }
 
   static close(id) {
-    _instances[id].close();
+    instances[id].close();
   }
 
-  static setCloseCallback(id, callback) {
-    _instances[id].closeCallback = callback;
+  static closeAll() {
+    Object.values(instances).forEach((modal) => modal.close());
   }
 
   static setOpenCallback(id, callback) {
-    _instances[id].openCallback = callback;
+    instances[id].openCallback = callback;
+  }
+
+  static setCloseCallback(id, callback) {
+    instances[id].closeCallback = callback;
   }
 }
 
-const defaultOptions = {
-  scrollLock: true,
-  openOnLoad: false,
-  openOnFocus: false,
-
-  closeCallback: function() {},
-
-  openCallback: function(target) {},
-};
-
-Modal.initAll();
-
-window.Modal = Modal;
+export function initModals() {
+  document.querySelectorAll('.j_modal').forEach(($modal) => {
+    // eslint-disable-next-line no-new
+    new Modal({
+      id: $modal.id,
+      $el: $modal,
+      $toggleBtns: document.querySelectorAll(`[data-modal-target="#${$modal.id}"]`),
+      $closeBtns: $modal.querySelectorAll('.j_closeModal'),
+      openOnLoad: $modal.hasAttribute('data-open-on-load'),
+      openOnFocus: $modal.hasAttribute('data-open-on-focus'),
+    });
+  });
+}

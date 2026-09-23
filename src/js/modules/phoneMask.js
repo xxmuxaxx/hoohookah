@@ -1,17 +1,13 @@
-const inputs = document.querySelectorAll('.j_mask'); // Inputs
+const MATRIX = '+7 (___) ___-__-__';
 
-if (inputs.length) {
-  // eslint-disable-next-line no-undef
-  const event = new Event('input');
-
-  inputs.forEach((input) => {
-    input.addEventListener('input', mask, false);
-    input.addEventListener('focus', mask, false);
-    input.addEventListener('blur', mask, false);
-    input.addEventListener('keydown', mask, false);
+// Formats `.j_mask` inputs as a Russian phone number while typing
+export function initPhoneMask() {
+  document.querySelectorAll('.j_mask').forEach((input) => {
+    ['input', 'focus', 'blur', 'keydown'].forEach((type) => input.addEventListener(type, mask));
 
     if (input.value !== '') {
-      input.dispatchEvent(event);
+      // eslint-disable-next-line no-undef
+      input.dispatchEvent(new Event('input'));
       input.blur();
     }
   });
@@ -31,13 +27,12 @@ function setCursorPosition(pos, elem) {
 
 function mask(event) {
   if (this.selectionStart < 3) event.preventDefault();
-  const matrix = '+7 (___) ___-__-__';
   let i = 0;
-  const def = matrix.replace(/\D/g, '');
+  const def = MATRIX.replace(/\D/g, '');
   let val = this.value.replace(/\D/g, '');
 
   if (def.length >= val.length) val = def;
-  this.value = matrix.replace(/[_\d]/g, function(a) {
+  this.value = MATRIX.replace(/[_\d]/g, function(a) {
     return i < val.length ? val.charAt(i++) : a;
   });
   i = this.value.indexOf('_');
