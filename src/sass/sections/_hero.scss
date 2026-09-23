@@ -1,0 +1,85 @@
+@use '../abstracts/breakpoints' as *;
+
+.hero {
+  padding-block: 48px 72px;
+  overflow: hidden;
+
+  @include up(md) {
+    padding-block: 72px 112px;
+  }
+
+  &__inner {
+    display: grid;
+    gap: 24px;
+    align-items: center;
+
+    @include up(md) {
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+    }
+  }
+
+  &__title {
+    font-size: clamp(40px, 7vw, 76px);
+  }
+
+  &__lead {
+    max-width: 540px;
+    margin-top: 24px;
+    font-size: 18px;
+    color: var(--muted);
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 32px;
+  }
+
+  &__facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 40px;
+    margin-top: 48px;
+  }
+
+  &__visual {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    margin-inline: auto;
+
+    @include down(md) {
+      order: -1;
+      width: 70%;
+    }
+
+    svg {
+      width: 100%;
+      height: auto;
+    }
+
+    // Warm glow behind the showcase hookah
+    &::before {
+      position: absolute;
+      inset: 15% 5% 5%;
+      z-index: -1;
+      content: '';
+      background: radial-gradient(closest-side, rgb(242 157 56 / 28%), transparent);
+      filter: blur(20px);
+    }
+  }
+}
+
+.fact {
+  &__label {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  &__value {
+    font-size: 24px;
+    font-weight: 700;
+  }
+}

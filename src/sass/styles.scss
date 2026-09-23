@@ -1,20 +1,15 @@
-// Extensions - Расширения
-@use 'extensions/reset';
-
-// Libs - Библиотеки (before our styles so they can override them)
-@use 'swiper/css';
-@use 'swiper/css/navigation';
-
-// Variables - Переменные
-@use 'variables/fonts';
-@use 'variables/variables';
-@use 'variables/mixins';
-@use 'variables/global';
-@use 'variables/typography';
-@use 'variables/modals';
-@use 'variables/UI';
-
-// Sections - Разделы сайта
+@use 'base/fonts';
+@use 'base/tokens';
+@use 'base/reset';
+@use 'base/base';
+@use 'components/button';
+@use 'components/field';
+@use 'components/option';
+@use 'components/summary';
+@use 'components/dialog';
 @use 'sections/header';
 @use 'sections/hero';
 @use 'sections/constructor';
+@use 'sections/steps';
+@use 'sections/delivery';
+@use 'sections/footer';

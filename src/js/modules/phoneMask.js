@@ -37,3 +37,5 @@ function mask(event) {
     if (this.value.length < 5) this.value = '';
   } else setCursorPosition(this.value.length, this);
 }
+
+export const isPhoneComplete = (value) => value.length === MATRIX.length && !value.includes('_');

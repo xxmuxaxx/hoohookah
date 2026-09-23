@@ -1,7 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { defineConfig } from 'vite';
-import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 
 const root = path.resolve(import.meta.dirname, 'src');
 
@@ -38,15 +37,14 @@ function htmlPartials() {
   };
 }
 
-// Adds <link rel="preload"> for the bundled fonts so text doesn't wait for the CSS to load them.
-// Fonts matching `skip` still load, but only when the page actually uses them.
-function preloadFonts({ skip } = {}) {
+// Adds <link rel="preload"> for the bundled fonts so text doesn't wait for the CSS to load them
+function preloadFonts() {
   return {
     name: 'preload-fonts',
     apply: 'build',
     transformIndexHtml: (html, { bundle }) =>
       Object.values(bundle)
-        .filter(({ fileName }) => /\.woff2?$/.test(fileName) && !skip?.test(fileName))
+        .filter(({ fileName }) => /\.woff2?$/.test(fileName))
         .map(({ fileName }) => ({
           tag: 'link',
           attrs: {
@@ -65,7 +63,7 @@ export default defineConfig({
   root,
   base: './',
   publicDir: false,
-  plugins: [htmlPartials(), preloadFonts({ skip: /Italic/ }), ViteImageOptimizer({ png: { quality: 80 } })],
+  plugins: [htmlPartials(), preloadFonts()],
   server: {
     host: true,
     open: true,

@@ -1,0 +1,78 @@
+<section class="section constructor" id="constructor" data-constructor>
+  <div class="container">
+    <header class="section__header">
+      <p class="eyebrow">Шаг за шагом</p>
+      <h2 class="section__title">Конструктор</h2>
+    </header>
+
+    <form class="constructor__layout" novalidate>
+      <aside class="constructor__preview">
+        <div class="preview">
+          <div class="segmented" role="radiogroup" aria-label="Модель" data-models></div>
+          <div class="preview__stage" data-preview role="img" aria-label="Превью собранного кальяна"></div>
+          <p class="preview__note" data-model-note></p>
+          <p class="preview__total">
+            <span class="preview__total-label">Итого</span>
+            <span class="preview__total-value" data-total aria-live="polite">—</span>
+          </p>
+        </div>
+      </aside>
+
+      <div class="constructor__steps">
+        <div data-groups></div>
+
+        <fieldset class="step order" id="order">
+          <legend class="step__title"><span class="step__number" data-order-number></span>Оформление</legend>
+
+          <ul class="summary" data-summary></ul>
+
+          <div class="field">
+            <label class="field__label" for="promo">Промокод</label>
+            <div class="field__row">
+              <input class="input" id="promo" name="promo" autocomplete="off" placeholder="Например, HOOHOOKAH" />
+              <button class="button button--ghost button--small" type="button" data-promo-apply>Применить</button>
+            </div>
+            <p class="field__hint" data-promo-message aria-live="polite"></p>
+          </div>
+
+          <div class="field">
+            <p class="field__label">Доставка</p>
+            <div class="choice-list" data-delivery></div>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="phone">Телефон</label>
+            <input
+              class="input j_mask"
+              id="phone"
+              name="phone"
+              type="tel"
+              inputmode="tel"
+              autocomplete="tel"
+              placeholder="+7 (___) ___-__-__"
+              required
+            />
+            <p class="field__hint field__hint--error" data-phone-error aria-live="polite"></p>
+          </div>
+
+          <dl class="totals" data-totals></dl>
+
+          <button class="button button--primary button--block" type="submit">Оформить заказ</button>
+          <p class="order__policy">
+            Нажимая «Оформить заказ», вы соглашаетесь на обработку персональных данных. Это демо: заказ никуда не
+            отправляется.
+          </p>
+        </fieldset>
+      </div>
+    </form>
+  </div>
+
+  <div class="mobile-bar" data-mobile-bar hidden>
+    <div class="mobile-bar__preview" data-mobile-preview aria-hidden="true"></div>
+    <div class="mobile-bar__total">
+      <span class="mobile-bar__label">Итого</span>
+      <span class="mobile-bar__value" data-mobile-total>—</span>
+    </div>
+    <a class="button button--primary button--small" href="#order">К оформлению</a>
+  </div>
+</section>

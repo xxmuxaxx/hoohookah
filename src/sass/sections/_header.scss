@@ -1,0 +1,72 @@
+@use '../abstracts/breakpoints' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgb(16 13 11 / 75%);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+
+  &__inner {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    height: var(--header-height);
+  }
+
+  &__phone {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-left: auto;
+    font-weight: 600;
+    white-space: nowrap;
+
+    .icon {
+      color: var(--accent);
+    }
+
+    @include down(sm) {
+      span {
+        display: none;
+      }
+    }
+  }
+}
+
+.logo {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  &__mark {
+    width: 36px;
+    height: 36px;
+  }
+
+  &__name {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+}
+
+.nav {
+  display: none;
+  gap: 28px;
+
+  @include up(md) {
+    display: flex;
+  }
+
+  &__link {
+    font-size: 15px;
+    color: var(--muted);
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--text);
+    }
+  }
+}

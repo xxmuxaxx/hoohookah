@@ -1,0 +1,55 @@
+.summary {
+  display: grid;
+  gap: 2px;
+  padding: 8px 0;
+  border-block: 1px solid var(--border);
+
+  &__item {
+    display: grid;
+    grid-template-columns: 110px 1fr auto;
+    gap: 12px;
+    padding: 6px 0;
+    font-size: 14px;
+  }
+
+  &__label {
+    color: var(--muted);
+  }
+
+  &__price {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  &--compact {
+    margin-block: 16px;
+    text-align: left;
+  }
+}
+
+.totals {
+  display: grid;
+  gap: 6px;
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+
+    dd {
+      color: var(--text);
+    }
+
+    &--discount dd {
+      color: var(--success);
+    }
+
+    &--total {
+      padding-top: 10px;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      border-top: 1px solid var(--border);
+    }
+  }
+}
