@@ -1,0 +1,14 @@
+<dialog class="dialog" id="age-gate" aria-labelledby="age-gate-title">
+  <div class="dialog__body">
+    <p class="eyebrow">18+</p>
+    <h2 class="dialog__title" id="age-gate-title">Вам уже есть 18 лет?</h2>
+    <p class="dialog__text">Сайт продаёт товары для курения и доступен только совершеннолетним.</p>
+    <div class="dialog__actions" data-age-actions>
+      <button class="button button--primary" type="button" data-age-confirm>Да, мне есть 18</button>
+      <button class="button button--ghost" type="button" data-age-deny>Нет</button>
+    </div>
+    <p class="dialog__text dialog__text--muted" data-age-denied hidden>
+      Извините, сайт доступен только с 18 лет. Возвращайтесь позже!
+    </p>
+  </div>
+</dialog>

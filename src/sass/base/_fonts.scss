@@ -1,0 +1,12 @@
+// Montserrat-Bold.woff2 is actually the ExtraBold cut, which the design uses for bold
+$faces: (('Montserrat-Regular', 400), ('Montserrat-SemiBold', 600), ('Montserrat-Bold', 700));
+
+@each $file, $weight in $faces {
+  @font-face {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: $weight;
+    src: url('/fonts/Montserrat/#{$file}.woff2') format('woff2');
+    font-display: swap;
+  }
+}

@@ -1,0 +1,12 @@
+<dialog class="dialog" id="order-success" aria-labelledby="order-success-title">
+  <form class="dialog__body" method="dialog">
+    <span class="dialog__badge" aria-hidden="true">
+      <svg class="icon"><use href="#icon-check"></use></svg>
+    </span>
+    <h2 class="dialog__title" id="order-success-title">Заказ <span data-order-id></span> принят</h2>
+    <p class="dialog__text">Перезвоним на <b data-order-phone></b> в течение 15 минут, чтобы подтвердить заказ.</p>
+    <ul class="summary summary--compact" data-order-summary></ul>
+    <p class="dialog__total">Итого: <b data-order-total></b></p>
+    <button class="button button--primary button--block">Отлично</button>
+  </form>
+</dialog>

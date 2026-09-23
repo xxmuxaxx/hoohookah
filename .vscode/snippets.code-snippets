@@ -23,44 +23,44 @@
       "\t<div class=\"container\">",
       "\t\t$0",
       "\t</div> <!-- ./ End of container -->",
-      "</section> <!-- ./ End of $1 -->"
+      "</section> <!-- ./ End of $1 -->",
     ],
-    "description": "Create section and container"
+    "description": "Create section and container",
   },
   "max-w": {
     "scope": "scss",
     "prefix": "_max",
     "body": ["@include max-width($1) {", "  $2", "}"],
-    "description": "Media Max Width"
+    "description": "Media Max Width",
   },
   "min-w": {
     "scope": "scss",
     "prefix": "_min",
     "body": ["@include min-width($1) {", "  $2", "}"],
-    "description": "Media Min Width"
+    "description": "Media Min Width",
   },
   "max-h": {
     "scope": "scss",
     "prefix": "_maxH",
     "body": ["@include max-height($1) {", "  $2", "}"],
-    "description": "Media Max Height"
+    "description": "Media Max Height",
   },
   "min-h": {
     "scope": "scss",
     "prefix": "_minH",
     "body": ["@include min-height($1) {", "  $2", "}"],
-    "description": "Media Min Height"
+    "description": "Media Min Height",
   },
   "max-wh": {
     "scope": "scss",
     "prefix": "_maxWH",
     "body": ["@include max-width-and-height($1) {", "  $2", "}"],
-    "description": "Media Max Height"
+    "description": "Media Max Height",
   },
   "min-wh": {
     "scope": "scss",
     "prefix": "_minWH",
     "body": ["@include min-width-and-height($1) {", "  $2", "}"],
-    "description": "Media Min Height"
-  }
+    "description": "Media Min Height",
+  },
 }

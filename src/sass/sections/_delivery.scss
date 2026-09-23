@@ -1,0 +1,44 @@
+@use '../abstracts/breakpoints' as *;
+
+.delivery {
+  &__inner {
+    display: grid;
+    gap: 16px;
+
+    @include up(md) {
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+  }
+
+  &__list {
+    display: grid;
+    gap: 12px;
+  }
+}
+
+.delivery-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 16px;
+  align-items: center;
+  padding: 22px 28px;
+
+  &__title {
+    font-size: 18px;
+  }
+
+  &__note {
+    grid-row: 2;
+    color: var(--muted);
+  }
+
+  &__price {
+    grid-row: 1 / span 2;
+    grid-column: 2;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+}

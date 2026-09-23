@@ -1,40 +1,11 @@
-module.exports = {
-  extends: [
-    'stylelint-config-standard',
-    'stylelint-config-prettier',
-    'stylelint-config-recess-order',
-  ],
-  plugins: ['stylelint-scss'],
+export default {
+  extends: ['stylelint-config-standard-scss', 'stylelint-config-recess-order'],
   rules: {
-    indentation: 2,
-    'string-quotes': 'single',
-    'at-rule-no-unknown': null,
-    'no-descending-specificity': null,
-    // ===
-    // PRETTIER
-    // ===
-    // HACK: to compensate for https://github.com/shannonmoeller/stylelint-config-prettier/issues/4
-    // Modifying setting from Standard: https://github.com/stylelint/stylelint-config-standard/blob/7b76d7d0060f2e13a331806a09c2096c7536b0a6/index.js#L6
-    'at-rule-empty-line-before': [
-      'always',
-      {
-        except: ['blockless-after-same-name-blockless', 'first-nested'],
-        ignore: ['after-comment'],
-        ignoreAtRules: ['else'],
-      },
+    // BEM: block__element--modifier
+    'selector-class-pattern': [
+      '^[a-z][a-z0-9]*(-[a-z0-9]+)*(__[a-z0-9]+(-[a-z0-9]+)*)?(--[a-z0-9]+(-[a-z0-9]+)*)?$',
+      { message: 'Expected class to be BEM (block__element--modifier)' },
     ],
-    // ===
-    // SCSS
-    // ===
-    'scss/dollar-variable-colon-space-after': 'always',
-    'scss/dollar-variable-colon-space-before': 'never',
-    'scss/dollar-variable-no-missing-interpolation': true,
-    'scss/dollar-variable-pattern': /^[a-z-]+$/,
-    'scss/double-slash-comment-whitespace-inside': 'always',
-    'scss/operator-no-newline-before': true,
-    'scss/operator-no-unspaced': true,
-    'scss/selector-no-redundant-nesting-selector': true,
-    // Allow SCSS and CSS module keywords beginning with `@`
-    'scss/at-rule-no-unknown': true,
+    'no-descending-specificity': null,
   },
 };

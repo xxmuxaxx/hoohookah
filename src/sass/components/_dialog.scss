@@ -1,0 +1,78 @@
+.dialog {
+  width: min(100% - 32px, 440px);
+  max-height: calc(100% - 32px);
+  padding: 0;
+  margin: auto;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+
+  &::backdrop {
+    background: rgb(8 6 5 / 75%);
+    backdrop-filter: blur(6px);
+  }
+
+  &[open] {
+    animation: dialog-in 0.25s ease-out;
+  }
+
+  &__body {
+    display: grid;
+    gap: 12px;
+    padding: 32px;
+    text-align: center;
+  }
+
+  &__badge {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 4px;
+    color: var(--accent-ink);
+    background: var(--success);
+    border-radius: 50%;
+
+    .icon {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  &__title {
+    font-size: 26px;
+  }
+
+  &__text {
+    color: var(--muted);
+
+    b {
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    &--muted {
+      font-size: 14px;
+    }
+  }
+
+  &__actions {
+    display: grid;
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  &__total {
+    margin-bottom: 8px;
+    font-size: 18px;
+  }
+}
+
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+}
