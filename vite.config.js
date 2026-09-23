@@ -38,14 +38,15 @@ function htmlPartials() {
   };
 }
 
-// Adds <link rel="preload"> for the bundled fonts so text doesn't wait for the CSS to load them
-function preloadFonts() {
+// Adds <link rel="preload"> for the bundled fonts so text doesn't wait for the CSS to load them.
+// Fonts matching `skip` still load, but only when the page actually uses them.
+function preloadFonts({ skip } = {}) {
   return {
     name: 'preload-fonts',
     apply: 'build',
     transformIndexHtml: (html, { bundle }) =>
       Object.values(bundle)
-        .filter(({ fileName }) => /\.woff2?$/.test(fileName))
+        .filter(({ fileName }) => /\.woff2?$/.test(fileName) && !skip?.test(fileName))
         .map(({ fileName }) => ({
           tag: 'link',
           attrs: {
@@ -64,7 +65,7 @@ export default defineConfig({
   root,
   base: './',
   publicDir: false,
-  plugins: [htmlPartials(), preloadFonts(), ViteImageOptimizer({ png: { quality: 80 } })],
+  plugins: [htmlPartials(), preloadFonts({ skip: /Italic/ }), ViteImageOptimizer({ png: { quality: 80 } })],
   server: {
     host: true,
     open: true,

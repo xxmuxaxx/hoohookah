@@ -24,7 +24,9 @@ Lint setup: ESLint flat config (`eslint.config.js`: `@eslint/js` recommended + p
 **Build (`vite.config.js`).** Vite's root is `src/`. Every `src/*.html` is a page (`build.rolldownOptions.input`). Output goes to `public/` with `base: './'`, so the site works from any folder. Assets are hashed into `public/assets/`, and files under 4 KB are inlined. Two small local plugins live in the config:
 
 - `htmlPartials`: `<load src="./sections/header.html" />` in a page is replaced with that file's contents (path relative to the including file; partials can nest). Partials live in `src/sections/` and `src/modules/`. Asset paths inside partials should be root-relative (`/img/...`), because the markup ends up inside the page. The dev server does a full reload on any `.html` change.
-- `preloadFonts`: adds `<link rel="preload">` for the bundled fonts.
+- `preloadFonts`: adds `<link rel="preload">` for the bundled fonts, except those matching `skip` (the unused italic).
+
+Fonts are `.woff2` only (`src/sass/variables/fonts.scss`). Montserrat-Bold is actually the ExtraBold cut, which is what the design uses for bold.
 
 PNGs are compressed by `vite-plugin-image-optimizer` (sharp, `quality: 80`). `console.*` and `debugger` are dropped from production JS (Rolldown `minify.compress`).
 
